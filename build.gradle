@@ -12,5 +12,6 @@ repositories {
 }
 
 dependencies {
+    compile 'org.mockito:mockito-all:1.10.19'
     compile 'org.junit.jupiter:junit-jupiter-api:5.4.0-RC2'
 }
