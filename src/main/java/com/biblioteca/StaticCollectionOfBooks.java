@@ -7,8 +7,8 @@ import java.util.List;
 public class StaticCollectionOfBooks implements BookCollection {
     private static final String NEWLINE = "\n";
     private List<Book> books = Arrays.asList(
-            new Book("Head First Java"),
-            new Book("Clean Code")
+            new Book("War and Peace", "Leo Tolstoy", "1867"),
+            new Book("To Kill a Mockingbird", "Harper Lee", "1960")
     );
 
     @Override
@@ -18,9 +18,12 @@ public class StaticCollectionOfBooks implements BookCollection {
 
     @Override
     public String representation() {
+        int count = 1;
         StringBuilder builder = new StringBuilder();
         for (Book book : books) {
-            builder.append(book).append(NEWLINE);
+            builder.append(String.format("%1$10s", count));
+            builder.append(book.representation()).append(NEWLINE);
+            count++;
         }
 
         return builder.toString();
