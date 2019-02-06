@@ -12,20 +12,20 @@ class BibliotecaApplicationTest {
     void expectsWelcomeMessageToBePrintedWhenApplicationStarts() {
         IODriver consoleDriver = mock(ConsoleIODriver.class);
         when(consoleDriver.readInput()).thenReturn("1");
-
         BibliotecaApplication app =
-                new BibliotecaApplication(consoleDriver, new StaticCollectionOfBooks());
+                new BibliotecaApplication(
+                        new StaticCollectionOfBooks(),
+                        new ConsoleUI(consoleDriver));
 
         app.run();
 
-        verify(consoleDriver).display("Welcome to Biblioteca Application!\n");
+        verify(consoleDriver).display("Welcome to Biblioteca!\n");
     }
 
     @Test
     void expectsListOfBooksToBeShownAfterTheWelcomeMessage() {
         IODriver consoleDriver = mock(ConsoleIODriver.class);
         when(consoleDriver.readInput()).thenReturn("1");
-
         BookCollection collectionOfBooks =
                 new BookCollection() {
                     @Override
@@ -39,7 +39,7 @@ class BibliotecaApplicationTest {
                     }
                 };
         BibliotecaApplication app =
-                new BibliotecaApplication(consoleDriver, collectionOfBooks);
+                new BibliotecaApplication(collectionOfBooks, new ConsoleUI(consoleDriver));
 
         app.run();
 
@@ -54,13 +54,16 @@ class BibliotecaApplicationTest {
 
         BibliotecaApplication app =
                 new BibliotecaApplication
-                        (userEnters1, new StaticCollectionOfBooks());
+                        (new StaticCollectionOfBooks(), new ConsoleUI(userEnters1));
 
 
         app.run();
 
-        verify(userEnters1, times(1)).display("Available books:");
-        verify(userEnters1, times(1)).display("         1                 War and Peace                   Leo Tolstoy                          1867\n" +
+        verify(userEnters1, times(1)).display("Welcome to Biblioteca!\n");
+        verify(userEnters1, times(1)).display("1. List all books");
+        verify(userEnters1, times(1)).display("Type 'quit' to exit.");
+        verify(userEnters1, atLeastOnce()).display("Available books:");
+        verify(userEnters1, atLeastOnce()).display("         1                 War and Peace                   Leo Tolstoy                          1867\n" +
                 "         2         To Kill a Mockingbird                    Harper Lee                          1960\n");
     }
 
@@ -71,7 +74,7 @@ class BibliotecaApplicationTest {
 
         BibliotecaApplication app =
                 new BibliotecaApplication
-                        (userEntersInvalid, new StaticCollectionOfBooks());
+                        (new StaticCollectionOfBooks(), new ConsoleUI(userEntersInvalid));
 
         app.run();
 
@@ -85,7 +88,7 @@ class BibliotecaApplicationTest {
 
         BibliotecaApplication app =
                 new BibliotecaApplication
-                        (consoleIODriver, new StaticCollectionOfBooks());
+                        (new StaticCollectionOfBooks(), new ConsoleUI(consoleIODriver));
 
         app.run();
 
