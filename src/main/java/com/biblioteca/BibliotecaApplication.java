@@ -4,6 +4,11 @@ package com.biblioteca;
 class BibliotecaApplication {
     private static final String WELCOME_MESSAGE = "Welcome to Biblioteca Application!\n";
     private static final String AVAILABLE_BOOKS_HEADER = "Available books:";
+    private static final String MENU_OPTION_LIST_ALL_BOOKS = "1. List all books";
+    private static final String MENU_OPTION_QUIT = "Type 'quit' to exit.";
+    private static final String PROMPT_INVALID_CHOICE = "Select a valid option!";
+    private static final String MENU_CHOICE_1 = "1";
+    private static final String MENU_CHOICE_QUIT = "quit";
 
     private final IODriver ioDriver;
     private final BookCollection bookCollection;
@@ -19,19 +24,22 @@ class BibliotecaApplication {
         showMenu();
 
         String userChoice = ioDriver.readInput().trim();
-        if (userChoice.equals("1")) {
-            listBooks();
+        if (userChoice.equals(MENU_CHOICE_1)) {
+            showBooks();
             return;
         }
-        ioDriver.display("Select a valid option!");
+        if (userChoice.equalsIgnoreCase(MENU_CHOICE_QUIT)) {
+            return;
+        }
+        ioDriver.display(PROMPT_INVALID_CHOICE);
     }
 
     private void showMenu() {
-        ioDriver.display("1. List all books");
-        ioDriver.display("Type 'quit' to exit.");
+        ioDriver.display(MENU_OPTION_LIST_ALL_BOOKS);
+        ioDriver.display(MENU_OPTION_QUIT);
     }
 
-    private void listBooks() {
+    private void showBooks() {
         ioDriver.display(AVAILABLE_BOOKS_HEADER);
         ioDriver.display(bookCollection.representation());
     }
