@@ -28,6 +28,7 @@ class BibliotecaApplication {
 
     private void showMenu() {
         ioDriver.display("1. List all books");
+        ioDriver.display("Type 'quit' to exit.");
     }
 
     private void listBooks() {

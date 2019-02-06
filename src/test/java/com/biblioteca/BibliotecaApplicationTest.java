@@ -77,4 +77,18 @@ class BibliotecaApplicationTest {
 
         verify(userEntersInvalid, atLeastOnce()).display("Select a valid option!");
     }
+
+    @Test
+    void expectsQuitOptionToBeGivenToUser() {
+        IODriver consoleIODriver = mock(ConsoleIODriver.class);
+        when(consoleIODriver.readInput()).thenReturn("");
+
+        BibliotecaApplication app =
+                new BibliotecaApplication
+                        (consoleIODriver, new StaticCollectionOfBooks());
+
+        app.run();
+
+        verify(consoleIODriver, atLeastOnce()).display("Type 'quit' to exit.");
+    }
 }
