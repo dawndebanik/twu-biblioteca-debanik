@@ -2,8 +2,7 @@ package com.biblioteca;
 
 // represents the library management system
 class BibliotecaApplication {
-    private static final String WELCOME_MESSAGE =
-            "Welcome to Biblioteca Application!\n";
+    private static final String WELCOME_MESSAGE = "Welcome to Biblioteca Application!\n";
     private static final String AVAILABLE_BOOKS_HEADER = "Available books:";
 
     private final IODriver ioDriver;
@@ -20,9 +19,11 @@ class BibliotecaApplication {
         showMenu();
 
         String userChoice = ioDriver.readInput().trim();
-        if (userChoice.equals("1")){
+        if (userChoice.equals("1")) {
             listBooks();
+            return;
         }
+        ioDriver.display("Select a valid option!");
     }
 
     private void showMenu() {

@@ -47,22 +47,34 @@ class BibliotecaApplicationTest {
     }
 
 
-
     @Test
-    void expectsMenuToBeShownWhenUserEnters1() {
-        IODriver userEnters1Driver = mock(IODriver.class);
-        when(userEnters1Driver.readInput()).thenReturn("1");
+    void expectsBookListToBeShownWhenUserEnters1() {
+        IODriver userEnters1 = mock(IODriver.class);
+        when(userEnters1.readInput()).thenReturn("1");
 
-        BookCollection collectionOfBooks = new StaticCollectionOfBooks();
-        BibliotecaApplication app = new BibliotecaApplication(userEnters1Driver, collectionOfBooks);
+        BibliotecaApplication app =
+                new BibliotecaApplication
+                        (userEnters1, new StaticCollectionOfBooks());
 
 
         app.run();
 
-        verify(userEnters1Driver).display("Welcome to Biblioteca Application!\n");
-        verify(userEnters1Driver).display("1. List all books");
-        verify(userEnters1Driver).display("Available books:");
-        verify(userEnters1Driver).display("         1                 War and Peace                   Leo Tolstoy                          1867\n" +
+        verify(userEnters1, times(1)).display("Available books:");
+        verify(userEnters1, times(1)).display("         1                 War and Peace                   Leo Tolstoy                          1867\n" +
                 "         2         To Kill a Mockingbird                    Harper Lee                          1960\n");
+    }
+
+    @Test
+    void expectsInvalidOptionPromptWhenUserEntersInvalidInput() {
+        IODriver userEntersInvalid = mock(ConsoleIODriver.class);
+        when(userEntersInvalid.readInput()).thenReturn("5");
+
+        BibliotecaApplication app =
+                new BibliotecaApplication
+                        (userEntersInvalid, new StaticCollectionOfBooks());
+
+        app.run();
+
+        verify(userEntersInvalid, atLeastOnce()).display("Select a valid option!");
     }
 }
