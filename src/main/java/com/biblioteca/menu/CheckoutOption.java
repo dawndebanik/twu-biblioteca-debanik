@@ -2,7 +2,7 @@ package com.biblioteca;
 
 import com.biblioteca.io.IODriver;
 
-public class CheckoutOption extends MenuOption {
+class CheckoutOption extends MenuOption {
     private static final String AVAILABLE_BOOKS_HEADER = "Available books:";
 
     CheckoutOption(BookCollection collection, IODriver ioDriver, Formatter formatter) {
@@ -10,8 +10,7 @@ public class CheckoutOption extends MenuOption {
     }
 
     @Override
-    void onSelect() {
-        ioDriver.display(AVAILABLE_BOOKS_HEADER);
+    void select() {
         ioDriver.display(formatter.formatBookCollection(collection));
         String bookNameChoice = ioDriver.readInput();
         try {

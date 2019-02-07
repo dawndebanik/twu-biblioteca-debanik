@@ -14,5 +14,5 @@ abstract class MenuOption {
         this.formatter = formatter;
     }
 
-    abstract void onSelect();
+    abstract void select();
 }

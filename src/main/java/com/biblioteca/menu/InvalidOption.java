@@ -10,7 +10,7 @@ public class InvalidOption extends MenuOption {
     }
 
     @Override
-    void onSelect() {
+    void select() {
         ioDriver.display(PROMPT_INVALID_CHOICE);
     }
 }

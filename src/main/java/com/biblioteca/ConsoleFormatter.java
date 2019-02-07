@@ -5,11 +5,13 @@ import java.util.List;
 public class ConsoleFormatter implements Formatter {
 
     private static final String ROW_FORMAT = "| %1$30s | %2$30s | %3$30s |\n";
+    private static final String AVAILABLE_BOOKS_HEADER = "Available books:";
 
     @Override
     public String formatBookCollection(BookCollection collection) {
         StringBuilder builder = new StringBuilder();
         List<Book> books = collection.getAvailableBooks();
+        builder.append(AVAILABLE_BOOKS_HEADER+"\n"+"\n");
         builder.append(rowBorder());
         builder.append(String.format(ROW_FORMAT, "", "", ""));
         builder.append(String.format(ROW_FORMAT, "Name", "Author", "Year of Publishing"));
