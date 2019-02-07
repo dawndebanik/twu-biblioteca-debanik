@@ -1,9 +1,11 @@
-package com.biblioteca;
+package com.biblioteca.menu;
 
+import com.biblioteca.BookCollection;
+import com.biblioteca.Formatter;
 import com.biblioteca.io.IODriver;
 
 // represents a point of choice offered to the user
-abstract class MenuOption {
+public abstract class MenuOption {
     final BookCollection collection;
     final IODriver ioDriver;
     final Formatter formatter;
@@ -14,5 +16,5 @@ abstract class MenuOption {
         this.formatter = formatter;
     }
 
-    abstract void select();
+    public abstract void select();
 }

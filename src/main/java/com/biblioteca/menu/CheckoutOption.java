@@ -1,16 +1,19 @@
-package com.biblioteca;
+package com.biblioteca.menu;
 
+import com.biblioteca.BookCollection;
+import com.biblioteca.BookNotAvailableException;
+import com.biblioteca.Formatter;
 import com.biblioteca.io.IODriver;
 
-class CheckoutOption extends MenuOption {
+public class CheckoutOption extends MenuOption {
     private static final String AVAILABLE_BOOKS_HEADER = "Available books:";
 
-    CheckoutOption(BookCollection collection, IODriver ioDriver, Formatter formatter) {
+    public CheckoutOption(BookCollection collection, IODriver ioDriver, Formatter formatter) {
         super(collection, ioDriver, formatter);
     }
 
     @Override
-    void select() {
+    public void select() {
         ioDriver.display(formatter.formatBookCollection(collection));
         String bookNameChoice = ioDriver.readInput();
         try {

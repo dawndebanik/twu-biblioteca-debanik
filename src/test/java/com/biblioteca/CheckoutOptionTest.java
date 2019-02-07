@@ -2,6 +2,8 @@ package com.biblioteca;
 
 import com.biblioteca.io.ConsoleIODriver;
 import com.biblioteca.io.IODriver;
+import com.biblioteca.menu.CheckoutOption;
+import com.biblioteca.menu.MenuOption;
 import org.junit.jupiter.api.Test;
 
 import static org.mockito.Mockito.*;

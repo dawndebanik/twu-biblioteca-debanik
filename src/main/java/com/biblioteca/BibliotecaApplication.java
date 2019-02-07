@@ -1,10 +1,5 @@
 package com.biblioteca;
 
-import com.biblioteca.io.IODriver;
-
-import java.util.Arrays;
-import java.util.List;
-
 // represents the library management system
 class BibliotecaApplication {
     private final BookCollection bookCollection;

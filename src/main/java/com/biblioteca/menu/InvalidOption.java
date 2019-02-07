@@ -1,5 +1,7 @@
-package com.biblioteca;
+package com.biblioteca.menu;
 
+import com.biblioteca.BookCollection;
+import com.biblioteca.Formatter;
 import com.biblioteca.io.IODriver;
 
 public class InvalidOption extends MenuOption {
@@ -10,7 +12,7 @@ public class InvalidOption extends MenuOption {
     }
 
     @Override
-    void select() {
+    public void select() {
         ioDriver.display(PROMPT_INVALID_CHOICE);
     }
 }

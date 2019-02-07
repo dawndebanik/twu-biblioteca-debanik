@@ -1,15 +1,17 @@
-package com.biblioteca;
+package com.biblioteca.menu;
 
+import com.biblioteca.BookCollection;
+import com.biblioteca.Formatter;
 import com.biblioteca.io.IODriver;
 
-class ListBooksOption extends MenuOption {
+public class ListBooksOption extends MenuOption {
 
-    ListBooksOption(BookCollection collection, IODriver ioDriver, Formatter formatter) {
+    public ListBooksOption(BookCollection collection, IODriver ioDriver, Formatter formatter) {
         super(collection, ioDriver, formatter);
     }
 
     @Override
-    void select() {
+    public void select() {
         ioDriver.display(formatter.formatBookCollection(collection));
     }
 }
