@@ -14,24 +14,23 @@ class BibliotecaApplication {
         userInterface.showGreeting();
         userInterface.showMenu();
 
-        String userChoice = userInterface.getInput();
+        String userChoice;
+        while(!(userChoice = userInterface.getInput())
+                .equalsIgnoreCase("quit")){
 
-        if (userChoice.equals(UserInterface.MENU_CHOICE_1)) {
-            userInterface.showBooks(bookCollection);
-            return;
+            if (userChoice.equals(UserInterface.MENU_CHOICE_1)) {
+                userInterface.showBooks(bookCollection);
+            }
+            else if (userChoice.equals(UserInterface.MENU_CHOICE_2)){
+                userInterface.showBooks(bookCollection);
+                String bookIndexChoice = userInterface.getInput();
+                int bookIndex = Integer.parseInt(bookIndexChoice);
+                bookCollection.checkOutBook(bookCollection.getBookWithIndex(bookIndex));
+            }
+            else {
+                userInterface.showInvalidChoicePrompt();
+            }
+            userInterface.showMenu();
         }
-        if (userChoice.equals(UserInterface.MENU_CHOICE_2)){
-            userInterface.showBooks(bookCollection);
-            String bookIndexChoice = userInterface.getInput();
-            int bookIndex = Integer.parseInt(bookIndexChoice);
-            bookCollection.checkOutBook(bookCollection.getBookWithIndex(bookIndex));
-            userInterface.showBooks(bookCollection);
-            return;
-        }
-        if (userChoice.equalsIgnoreCase(UserInterface.MENU_CHOICE_QUIT)) {
-            return;
-        }
-
-        userInterface.showInvalidChoicePrompt();
     }
 }
