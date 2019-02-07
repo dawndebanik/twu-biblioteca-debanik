@@ -1,7 +1,10 @@
 package com.biblioteca;
 
 import org.junit.jupiter.api.Test;
+import org.mockito.Matchers;
 
+import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Collections;
 import java.util.List;
 
@@ -14,7 +17,7 @@ class BibliotecaApplicationTest {
         when(consoleDriver.readInput()).thenReturn("1");
         BibliotecaApplication app =
                 new BibliotecaApplication(
-                        new StaticCollectionOfBooks(),
+                        new FixedBookCollection(),
                         new ConsoleUI(consoleDriver));
 
         app.run();
@@ -23,47 +26,18 @@ class BibliotecaApplicationTest {
     }
 
     @Test
-    void expectsListOfBooksToBeShownAfterTheWelcomeMessage() {
-        IODriver consoleDriver = mock(ConsoleIODriver.class);
-        when(consoleDriver.readInput()).thenReturn("1");
-        BookCollection collectionOfBooks =
-                new BookCollection() {
-                    @Override
-                    public List getAllBooks() {
-                        return Collections.singletonList(new Book("War and Peace", "Leo Tolstoy", "1867"));
-                    }
-
-                    @Override
-                    public String representation() {
-                        return String.format("1%1$10s", new Book("War and Peace", "Leo Tolstoy", "1867").representation());
-                    }
-                };
-        BibliotecaApplication app =
-                new BibliotecaApplication(collectionOfBooks, new ConsoleUI(consoleDriver));
-
-        app.run();
-
-        verify(consoleDriver).display("1                 War and Peace                   Leo Tolstoy                          1867");
-    }
-
-
-    @Test
     void expectsBookListToBeShownWhenUserEnters1() {
         IODriver userEnters1 = mock(IODriver.class);
         when(userEnters1.readInput()).thenReturn("1");
-
         BibliotecaApplication app =
                 new BibliotecaApplication
-                        (new StaticCollectionOfBooks(), new ConsoleUI(userEnters1));
+                        (new FixedBookCollection(), new ConsoleUI(userEnters1));
 
 
         app.run();
 
-        verify(userEnters1, times(1)).display("Welcome to Biblioteca!\n");
-        verify(userEnters1, times(1)).display("1. List all books");
-        verify(userEnters1, times(1)).display("Type 'quit' to exit.");
-        verify(userEnters1, atLeastOnce()).display("Available books:");
-        verify(userEnters1, atLeastOnce()).display("         1                 War and Peace                   Leo Tolstoy                          1867\n" +
+        verify(userEnters1).display("Available books:");
+        verify(userEnters1).display("         1                 War and Peace                   Leo Tolstoy                          1867\n" +
                 "         2         To Kill a Mockingbird                    Harper Lee                          1960\n");
     }
 
@@ -71,10 +45,9 @@ class BibliotecaApplicationTest {
     void expectsInvalidOptionPromptWhenUserEntersInvalidInput() {
         IODriver userEntersInvalid = mock(ConsoleIODriver.class);
         when(userEntersInvalid.readInput()).thenReturn("5");
-
         BibliotecaApplication app =
                 new BibliotecaApplication
-                        (new StaticCollectionOfBooks(), new ConsoleUI(userEntersInvalid));
+                        (new FixedBookCollection(), new ConsoleUI(userEntersInvalid));
 
         app.run();
 
@@ -85,13 +58,44 @@ class BibliotecaApplicationTest {
     void expectsQuitOptionToBeGivenToUser() {
         IODriver consoleIODriver = mock(ConsoleIODriver.class);
         when(consoleIODriver.readInput()).thenReturn("");
-
         BibliotecaApplication app =
                 new BibliotecaApplication
-                        (new StaticCollectionOfBooks(), new ConsoleUI(consoleIODriver));
+                        (new FixedBookCollection(), new ConsoleUI(consoleIODriver));
 
         app.run();
 
         verify(consoleIODriver, atLeastOnce()).display("Type 'quit' to exit.");
     }
+
+    @Test
+    void expectsOptionForCheckoutToBeGivenToUser() {
+        IODriver consoleIODriver = mock(ConsoleIODriver.class);
+        when(consoleIODriver.readInput()).thenReturn("");
+        BibliotecaApplication app =
+                new BibliotecaApplication
+                        (new FixedBookCollection(), new ConsoleUI(consoleIODriver));
+
+        app.run();
+
+        verify(consoleIODriver).display("2. Checkout a book");
+    }
+
+    @Test
+    void expectsCheckedOutBookToBeUnavailable() {
+        IODriver consoleIODriver = mock(ConsoleIODriver.class);
+        when(consoleIODriver.readInput())
+                .thenReturn("2").thenReturn("1");
+        BibliotecaApplication app =
+                new BibliotecaApplication
+                        (new FixedBookCollection(), new ConsoleUI(consoleIODriver));
+
+        app.run();
+
+        verify(consoleIODriver, atMost(1))
+                .display(contains("War and Peace"));
+        verify(consoleIODriver, never())
+                .display(contains("Select a valid option!\n"));
+    }
+
+
 }

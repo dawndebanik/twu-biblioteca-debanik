@@ -4,6 +4,9 @@ import java.util.List;
 
 // represents a repository of books
 interface BookCollection {
-    List getAllBooks();
+    List getAvailableBooks();
+    Book getBookWithIndex(int index);
+    void checkOutBook(Book book);
     String representation();
+
 }

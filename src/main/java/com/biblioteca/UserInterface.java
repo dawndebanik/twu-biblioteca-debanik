@@ -4,6 +4,7 @@ package com.biblioteca;
 // with the user is defined
 abstract class UserInterface {
     static final String MENU_CHOICE_1 = "1";
+    static final String MENU_CHOICE_2 = "2";
     static final String MENU_CHOICE_QUIT = "quit";
 
     final IODriver ioDriver;

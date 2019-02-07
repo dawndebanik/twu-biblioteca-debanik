@@ -8,6 +8,7 @@ class ConsoleUI extends UserInterface {
     private static final String MENU_OPTION_LIST_ALL_BOOKS = "1. List all books";
     private static final String MENU_OPTION_QUIT = "Type 'quit' to exit.";
     private static final String PROMPT_INVALID_CHOICE = "Select a valid option!";
+    private static final String MENU_OPTION_CHECKOUT = "2. Checkout a book";
 
     ConsoleUI(IODriver driver) {
         super(driver);
@@ -26,6 +27,7 @@ class ConsoleUI extends UserInterface {
     @Override
     void showMenu() {
         ioDriver.display(MENU_OPTION_LIST_ALL_BOOKS);
+        ioDriver.display(MENU_OPTION_CHECKOUT);
         ioDriver.display(MENU_OPTION_QUIT);
     }
 

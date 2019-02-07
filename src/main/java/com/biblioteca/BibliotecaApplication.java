@@ -20,6 +20,14 @@ class BibliotecaApplication {
             userInterface.showBooks(bookCollection);
             return;
         }
+        if (userChoice.equals(UserInterface.MENU_CHOICE_2)){
+            userInterface.showBooks(bookCollection);
+            String bookIndexChoice = userInterface.getInput();
+            int bookIndex = Integer.parseInt(bookIndexChoice);
+            bookCollection.checkOutBook(bookCollection.getBookWithIndex(bookIndex));
+            userInterface.showBooks(bookCollection);
+            return;
+        }
         if (userChoice.equalsIgnoreCase(UserInterface.MENU_CHOICE_QUIT)) {
             return;
         }
