@@ -95,4 +95,19 @@ class BibliotecaApplicationTest {
         verify(consoleIODriver, never())
                 .display(contains("Select a valid option!\n"));
     }
+
+    @Test
+    void expectsSuccessfulCheckoutMessageOnSuccessfulCheckout() {
+        IODriver consoleIODriver = mock(ConsoleIODriver.class);
+        when(consoleIODriver.readInput())
+                .thenReturn("2").thenReturn("War and Peace").thenReturn("1").thenReturn("quit");
+        BibliotecaApplication app =
+                new BibliotecaApplication
+                        (new FixedBookCollection(), new ConsoleUI(consoleIODriver));
+
+        app.run();
+
+        verify(consoleIODriver, times(1))
+                .display(contains("Thank you! Enjoy the book."));
+    }
 }

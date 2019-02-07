@@ -43,4 +43,9 @@ class ConsoleUI extends UserInterface {
     void showInvalidChoicePrompt() {
         ioDriver.display(PROMPT_INVALID_CHOICE);
     }
+
+    @Override
+    void showMessage(String message) {
+        ioDriver.display(message);
+    }
 }

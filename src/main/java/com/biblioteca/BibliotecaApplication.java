@@ -25,6 +25,7 @@ class BibliotecaApplication {
                 userInterface.showBooks(bookCollection);
                 String bookNameChoice = userInterface.getInput();
                 bookCollection.checkOutBook(bookCollection.getBookWithName(bookNameChoice));
+                userInterface.showMessage("Thank you! Enjoy the book.");
             }
             else {
                 userInterface.showInvalidChoicePrompt();

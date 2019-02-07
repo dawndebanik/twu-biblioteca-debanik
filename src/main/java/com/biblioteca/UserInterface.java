@@ -20,4 +20,5 @@ abstract class UserInterface {
     abstract void showMenu();
     abstract void showBooks(BookCollection collection);
     abstract void showInvalidChoicePrompt();
+    abstract void showMessage(String message);
 }
