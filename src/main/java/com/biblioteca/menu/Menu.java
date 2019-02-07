@@ -5,11 +5,13 @@ import java.util.Map;
 
 public class Menu {
     private final Map<String, MenuOption> options;
-    public Menu(Map<String, MenuOption> options){
+    private final MenuOption defaultOption;
+    public Menu(Map<String, MenuOption> options, MenuOption defaultOption) {
         this.options = new HashMap<>(options);
+        this.defaultOption = defaultOption;
     }
 
     public void select(String option) {
-        options.get(option).select();
+        options.getOrDefault(option, defaultOption).select();
     }
 }
