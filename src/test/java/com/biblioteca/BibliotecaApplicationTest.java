@@ -83,7 +83,7 @@ class BibliotecaApplicationTest {
     void expectsCheckedOutBookToBeUnavailable() {
         IODriver consoleIODriver = mock(ConsoleIODriver.class);
         when(consoleIODriver.readInput())
-                .thenReturn("2").thenReturn("1").thenReturn("quit");
+                .thenReturn("2").thenReturn("War and Peace").thenReturn("1").thenReturn("quit");
         BibliotecaApplication app =
                 new BibliotecaApplication
                         (new FixedBookCollection(), new ConsoleUI(consoleIODriver));
@@ -95,6 +95,4 @@ class BibliotecaApplicationTest {
         verify(consoleIODriver, never())
                 .display(contains("Select a valid option!\n"));
     }
-
-
 }

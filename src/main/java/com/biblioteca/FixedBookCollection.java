@@ -9,9 +9,9 @@ public class FixedBookCollection implements BookCollection {
     private static final String NEWLINE = "\n";
     private List<Book> books = new ArrayList<>(
             Arrays.asList(
-            new Book("War and Peace", "Leo Tolstoy", "1867"),
-            new Book("To Kill a Mockingbird", "Harper Lee", "1960")
-    ));
+                    new Book("War and Peace", "Leo Tolstoy", "1867"),
+                    new Book("To Kill a Mockingbird", "Harper Lee", "1960")
+            ));
 
     @Override
     public List<Book> getAvailableBooks() {
@@ -19,8 +19,13 @@ public class FixedBookCollection implements BookCollection {
     }
 
     @Override
-    public Book getBookWithIndex(int index) {
-        return books.get(index - 1);
+    public Book getBookWithName(String bookName) {
+        for (Book book : books) {
+            if (book.name().equals(bookName)) {
+                return book;
+            }
+        }
+        return null;
     }
 
     @Override

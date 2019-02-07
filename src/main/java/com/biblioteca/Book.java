@@ -1,5 +1,6 @@
 package com.biblioteca;
 
+import java.util.Arrays;
 import java.util.Objects;
 
 // represents a bound set of blank sheets for writing in
@@ -31,5 +32,9 @@ class Book {
 
     String representation() {
         return String.format("%1$30s%2$30s%3$30s", name, author, year);
+    }
+
+    String name() {
+        return name;
     }
 }

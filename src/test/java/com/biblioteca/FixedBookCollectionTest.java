@@ -36,12 +36,12 @@ class FixedBookCollectionTest {
     }
 
     @Test
-    void expectsProperBookToBeSelectedWithIndex() {
+    void expectsProperBookToBeSelectedWithName() {
         BookCollection fixedCollection = new FixedBookCollection();
-        int bookIndex = 1;
+        String bookName = "War and Peace";
 
         Book expectedBook = new Book("War and Peace", "Leo Tolstoy", "1867");
 
-        assertEquals(expectedBook, fixedCollection.getBookWithIndex(bookIndex));
+        assertEquals(expectedBook, fixedCollection.getBookWithName(bookName));
     }
 }

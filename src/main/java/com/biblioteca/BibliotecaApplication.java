@@ -23,9 +23,8 @@ class BibliotecaApplication {
             }
             else if (userChoice.equals(UserInterface.MENU_CHOICE_2)){
                 userInterface.showBooks(bookCollection);
-                String bookIndexChoice = userInterface.getInput();
-                int bookIndex = Integer.parseInt(bookIndexChoice);
-                bookCollection.checkOutBook(bookCollection.getBookWithIndex(bookIndex));
+                String bookNameChoice = userInterface.getInput();
+                bookCollection.checkOutBook(bookCollection.getBookWithName(bookNameChoice));
             }
             else {
                 userInterface.showInvalidChoicePrompt();
