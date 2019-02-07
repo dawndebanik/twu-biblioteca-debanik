@@ -19,7 +19,7 @@ public class FixedBookCollection implements BookCollection {
     }
 
     @Override
-    public void checkOutBook(String bookName) throws BookNotAvailableException{
+    public void removeBook(String bookName) throws BookNotAvailableException{
         for (Book book : books) {
             if (book.name().equals(bookName)) {
                 books.remove(book);
@@ -27,18 +27,5 @@ public class FixedBookCollection implements BookCollection {
             }
         }
         throw new BookNotAvailableException("No book with the requested name is available");
-    }
-
-    @Override
-    public String representation() {
-        int count = 1;
-        StringBuilder builder = new StringBuilder();
-        for (Book book : books) {
-            builder.append(String.format("%1$10s", count));
-            builder.append(book.representation()).append(NEWLINE);
-            count++;
-        }
-
-        return builder.toString();
     }
 }

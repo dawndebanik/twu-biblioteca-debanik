@@ -3,7 +3,6 @@ package com.biblioteca;
 import org.junit.jupiter.api.Test;
 
 import java.util.Arrays;
-import java.util.Collections;
 import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
@@ -33,10 +32,10 @@ class FixedBookCollectionTest {
         BookCollection fixedCollection = new FixedBookCollection();
         String bookName = "War and Peace";
 
-        fixedCollection.checkOutBook(bookName);
+        fixedCollection.removeBook(bookName);
 
-        /*for (Book book: fixedCollection.getAvailableBooks()) {
+        for (Book book: fixedCollection.getAvailableBooks()) {
             assertNotEquals("War and Peace", book.name());
-        }*/
+        }
     }
 }

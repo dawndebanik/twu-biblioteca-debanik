@@ -36,7 +36,7 @@ class ConsoleUI extends UserInterface {
     @Override
     void showBooks(BookCollection collection) {
         ioDriver.display(AVAILABLE_BOOKS_HEADER);
-        ioDriver.display(collection.representation());
+        // ioDriver.display(collection.representation());
     }
 
     @Override

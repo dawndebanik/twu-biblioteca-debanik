@@ -1,5 +1,10 @@
 package com.biblioteca;
 
+import com.biblioteca.io.IODriver;
+
+import java.util.Arrays;
+import java.util.List;
+
 // represents the library management system
 class BibliotecaApplication {
     private final BookCollection bookCollection;
@@ -8,6 +13,7 @@ class BibliotecaApplication {
     BibliotecaApplication(BookCollection bookCollection, UserInterface userInterface) {
         this.bookCollection = bookCollection;
         this.userInterface = userInterface;
+
     }
 
     void run() {
@@ -25,7 +31,7 @@ class BibliotecaApplication {
                 userInterface.showBooks(bookCollection);
                 String bookNameChoice = userInterface.getInput();
                 try {
-                    bookCollection.checkOutBook(bookNameChoice);
+                    bookCollection.removeBook(bookNameChoice);
                     userInterface.showMessage("Thank you! Enjoy the book.");
                 } catch (BookNotAvailableException e) {
                     userInterface.showMessage("That book is not available.");
