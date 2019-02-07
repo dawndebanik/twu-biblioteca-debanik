@@ -6,10 +6,11 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 
 class BookTest {
     @Test
-    void expectsTwoBooksWithSameDetailsToBeEqual() {
-        Book contact = new Book("Contact", "Carl Sagan", "1997");
-        Book anotherCopyOfContact = new Book("Contact", "Carl Sagan", "1997");
+    void expectsBookToStoreProperDetails() {
+        Book contactBook = new Book("Contact", "Carl Sagan", "1997");
 
-        assertEquals(contact, anotherCopyOfContact);
+        assertEquals("Contact", contactBook.name());
+        assertEquals("Carl Sagan", contactBook.author());
+        assertEquals("1997", contactBook.year());
     }
 }

@@ -24,8 +24,12 @@ class BibliotecaApplication {
             else if (userChoice.equals(UserInterface.MENU_CHOICE_2)){
                 userInterface.showBooks(bookCollection);
                 String bookNameChoice = userInterface.getInput();
-                bookCollection.checkOutBook(bookCollection.getBookWithName(bookNameChoice));
-                userInterface.showMessage("Thank you! Enjoy the book.");
+                try {
+                    bookCollection.checkOutBook(bookNameChoice);
+                    userInterface.showMessage("Thank you! Enjoy the book.");
+                } catch (BookNotAvailableException e) {
+                    userInterface.showMessage("That book is not available.");
+                }
             }
             else {
                 userInterface.showInvalidChoicePrompt();

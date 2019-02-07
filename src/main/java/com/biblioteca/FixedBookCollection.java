@@ -19,18 +19,14 @@ public class FixedBookCollection implements BookCollection {
     }
 
     @Override
-    public Book getBookWithName(String bookName) {
+    public void checkOutBook(String bookName) throws BookNotAvailableException{
         for (Book book : books) {
             if (book.name().equals(bookName)) {
-                return book;
+                books.remove(book);
+                return;
             }
         }
-        return null;
-    }
-
-    @Override
-    public void checkOutBook(Book book) {
-        books.remove(book);
+        throw new BookNotAvailableException("No book with the requested name is available");
     }
 
     @Override

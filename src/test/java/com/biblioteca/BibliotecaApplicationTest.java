@@ -110,4 +110,21 @@ class BibliotecaApplicationTest {
         verify(consoleIODriver, times(1))
                 .display(contains("Thank you! Enjoy the book."));
     }
+
+    @Test
+    void expectsBookNotAvailableMessageWhenRequestedBookIsUnavaiable() {
+        IODriver consoleIODriver = mock(ConsoleIODriver.class);
+        when(consoleIODriver.readInput())
+                .thenReturn("2").thenReturn("Random book").thenReturn("1").thenReturn("quit");
+        BibliotecaApplication app =
+                new BibliotecaApplication
+                        (new FixedBookCollection(), new ConsoleUI(consoleIODriver));
+
+        app.run();
+
+        verify(consoleIODriver, times(1))
+                .display(contains("That book is not available."));
+        verify(consoleIODriver, never())
+                .display(contains("Thank you! Enjoy the book."));
+    }
 }
