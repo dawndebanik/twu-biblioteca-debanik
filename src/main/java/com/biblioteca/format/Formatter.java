@@ -1,7 +1,7 @@
 package com.biblioteca.format;
 
-import com.biblioteca.Book;
-import com.biblioteca.BookCollection;
+import com.biblioteca.entities.Book;
+import com.biblioteca.entities.BookCollection;
 
 public interface Formatter {
     String formatBookCollection(BookCollection collection);

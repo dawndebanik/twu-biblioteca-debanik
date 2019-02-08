@@ -1,8 +1,7 @@
 package com.biblioteca.format;
 
-import com.biblioteca.Book;
-import com.biblioteca.BookCollection;
-import com.sun.org.apache.bcel.internal.generic.NEW;
+import com.biblioteca.entities.Book;
+import com.biblioteca.entities.BookCollection;
 
 import java.util.List;
 

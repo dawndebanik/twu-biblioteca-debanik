@@ -14,4 +14,8 @@ public class Menu {
     public void select(String option) {
         options.getOrDefault(option, defaultOption).select();
     }
+
+    public void ok(){
+
+    }
 }

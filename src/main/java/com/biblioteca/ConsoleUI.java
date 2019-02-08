@@ -1,5 +1,6 @@
 package com.biblioteca;
 
+import com.biblioteca.entities.BookCollection;
 import com.biblioteca.io.IODriver;
 
 // represents how the user sees

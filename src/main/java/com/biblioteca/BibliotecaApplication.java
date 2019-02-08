@@ -1,5 +1,7 @@
 package com.biblioteca;
 
+import com.biblioteca.entities.BookCollection;
+
 // represents the library management system
 class BibliotecaApplication {
     private final BookCollection bookCollection;

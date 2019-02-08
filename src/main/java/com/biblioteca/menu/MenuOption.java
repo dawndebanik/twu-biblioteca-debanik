@@ -1,6 +1,6 @@
 package com.biblioteca.menu;
 
-import com.biblioteca.BookCollection;
+import com.biblioteca.entities.BookCollection;
 import com.biblioteca.format.Formatter;
 import com.biblioteca.io.IODriver;
 

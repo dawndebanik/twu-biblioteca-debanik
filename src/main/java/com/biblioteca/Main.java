@@ -1,5 +1,6 @@
 package com.biblioteca;
 
+import com.biblioteca.entities.FixedBookCollection;
 import com.biblioteca.io.ConsoleIODriver;
 
 public class Main {

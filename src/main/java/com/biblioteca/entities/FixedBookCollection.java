@@ -1,4 +1,6 @@
-package com.biblioteca;
+package com.biblioteca.entities;
+
+import com.biblioteca.BookNotAvailableException;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -19,7 +21,7 @@ public class FixedBookCollection implements BookCollection {
     }
 
     @Override
-    public void removeBook(String bookName) throws BookNotAvailableException{
+    public void removeBook(String bookName) throws BookNotAvailableException {
         for (Book book : books) {
             if (book.name().equals(bookName)) {
                 books.remove(book);

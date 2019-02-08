@@ -1,5 +1,6 @@
 package com.biblioteca;
 
+import com.biblioteca.entities.BookCollection;
 import com.biblioteca.io.IODriver;
 
 // represents a contract how the interaction

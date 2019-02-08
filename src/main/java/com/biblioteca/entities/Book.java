@@ -1,4 +1,4 @@
-package com.biblioteca;
+package com.biblioteca.entities;
 
 import java.util.Arrays;
 import java.util.Objects;
@@ -9,7 +9,7 @@ public class Book {
     private final String author;
     private final String year;
 
-    Book(String name, String author, String year) {
+    public Book(String name, String author, String year) {
         this.name = name;
         this.author = author;
         this.year = year;

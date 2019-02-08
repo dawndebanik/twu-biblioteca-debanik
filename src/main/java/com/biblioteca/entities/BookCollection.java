@@ -1,4 +1,6 @@
-package com.biblioteca;
+package com.biblioteca.entities;
+
+import com.biblioteca.BookNotAvailableException;
 
 import java.util.List;
 

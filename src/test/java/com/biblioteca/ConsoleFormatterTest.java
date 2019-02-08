@@ -1,5 +1,8 @@
 package com.biblioteca;
 
+import com.biblioteca.entities.Book;
+import com.biblioteca.entities.BookCollection;
+import com.biblioteca.entities.FixedBookCollection;
 import com.biblioteca.format.ConsoleFormatter;
 import com.biblioteca.format.Formatter;
 import org.junit.jupiter.api.Test;
