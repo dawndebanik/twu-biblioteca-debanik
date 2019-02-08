@@ -1,7 +1,7 @@
 package com.biblioteca.menu;
 
 import com.biblioteca.BookCollection;
-import com.biblioteca.Formatter;
+import com.biblioteca.format.Formatter;
 import com.biblioteca.io.IODriver;
 
 public class ListBooksOption extends MenuOption {

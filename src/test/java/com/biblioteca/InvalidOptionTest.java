@@ -1,5 +1,6 @@
 package com.biblioteca;
 
+import com.biblioteca.format.ConsoleFormatter;
 import com.biblioteca.io.ConsoleIODriver;
 import com.biblioteca.io.IODriver;
 import com.biblioteca.menu.InvalidOption;

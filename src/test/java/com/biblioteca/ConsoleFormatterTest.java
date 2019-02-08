@@ -1,5 +1,7 @@
 package com.biblioteca;
 
+import com.biblioteca.format.ConsoleFormatter;
+import com.biblioteca.format.Formatter;
 import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
@@ -20,7 +22,8 @@ class ConsoleFormatterTest {
     void expectsBookCollectionToBeFormattedProperly() {
         BookCollection collection = new FixedBookCollection();
         Formatter formatter = new ConsoleFormatter();
-        String expected =
+        String expected = "Available books:\n" +
+                "\n" +
                 "+--------------------------------+--------------------------------+--------------------------------+\n" +
                 "|                                |                                |                                |\n" +
                 "|                           Name |                         Author |             Year of Publishing |\n" +
