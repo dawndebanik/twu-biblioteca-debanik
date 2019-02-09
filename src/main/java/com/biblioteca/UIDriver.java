@@ -5,6 +5,7 @@ import com.biblioteca.format.ConsoleFormatter;
 import com.biblioteca.format.Formatter;
 import com.biblioteca.io.ConsoleIODriver;
 import com.biblioteca.io.IODriver;
+import com.biblioteca.menu.Menu;
 import com.biblioteca.menu.MenuOption;
 
 // represents a contract how the interaction
@@ -23,7 +24,7 @@ public abstract class UIDriver {
     }
 
     public abstract String getInput();
-    public abstract void show(MenuOption option);
     public abstract void show(BookCollection collection);
     public abstract void show(String message);
+    public abstract void show(Menu menu);
 }

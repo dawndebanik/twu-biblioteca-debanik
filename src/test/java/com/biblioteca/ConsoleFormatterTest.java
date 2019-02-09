@@ -5,9 +5,16 @@ import com.biblioteca.entities.BookCollection;
 import com.biblioteca.entities.FixedBookCollection;
 import com.biblioteca.format.ConsoleFormatter;
 import com.biblioteca.format.Formatter;
+import com.biblioteca.menu.InvalidOption;
+import com.biblioteca.menu.ListBooksOption;
+import com.biblioteca.menu.Menu;
+import com.biblioteca.menu.MenuOption;
 import org.junit.jupiter.api.Test;
 
+import java.util.Collections;
+
 import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.mockito.Mockito.mock;
 
 class ConsoleFormatterTest {
     @Test
@@ -38,5 +45,15 @@ class ConsoleFormatterTest {
                 "+--------------------------------+--------------------------------+--------------------------------+\n";
 
         assertEquals(expected, formatter.format(collection));
+    }
+
+    @Test
+    void expectsMenuToBeFormattedProperly() {
+        MenuOption listBooks = new ListBooksOption("List Books");
+        Menu menu = new Menu(Collections.singletonList(listBooks), mock(InvalidOption.class), new ConsoleUIDriver());
+        Formatter formatter = new ConsoleFormatter();
+        String expected = "Menu:\n\n1. List Books\n";
+
+        assertEquals(expected, formatter.format(menu));
     }
 }

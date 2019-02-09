@@ -2,6 +2,7 @@ package com.biblioteca.format;
 
 import com.biblioteca.entities.Book;
 import com.biblioteca.entities.BookCollection;
+import com.biblioteca.menu.Menu;
 
 import java.util.List;
 
@@ -23,7 +24,7 @@ public class ConsoleFormatter implements Formatter {
     public String format(BookCollection collection) {
         StringBuilder builder = new StringBuilder();
         List<Book> books = collection.getAvailableBooks();
-        builder.append(AVAILABLE_BOOKS_HEADER+ NEWLINE +NEWLINE);
+        builder.append(AVAILABLE_BOOKS_HEADER + NEWLINE + NEWLINE);
         builder.append(rowBorder());
         builder.append(String.format(ROW_FORMAT, EMPTY_STRING, EMPTY_STRING, EMPTY_STRING));
         builder.append(String.format(ROW_FORMAT, HEADER_NAME, HEADER_AUTHOR, HEADER_YEAR));
@@ -45,7 +46,18 @@ public class ConsoleFormatter implements Formatter {
 
     @Override
     public String format(String message) {
-        return "\n***\t"+message+"\t***\n";
+        return "\n***\t" + message + "\t***\n";
+    }
+
+    @Override
+    public String format(Menu menu) {
+        int menuIndex = 1;
+        StringBuilder builder = new StringBuilder("Menu:\n\n");
+        List<String> optionNames = menu.getDisplayOptions();
+        for (String optionName : optionNames) {
+            builder.append(menuIndex).append(". ").append(optionName).append(NEWLINE);
+        }
+        return builder.toString();
     }
 
     private String rowBorder() {

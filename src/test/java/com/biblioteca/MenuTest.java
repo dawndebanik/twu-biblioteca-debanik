@@ -1,42 +1,46 @@
 package com.biblioteca;
 
-import com.biblioteca.menu.CheckoutOption;
-import com.biblioteca.menu.InvalidOption;
-import com.biblioteca.menu.Menu;
-import com.biblioteca.menu.MenuOption;
+import com.biblioteca.menu.*;
 import org.junit.jupiter.api.Test;
 
-import java.util.HashMap;
-import java.util.Map;
+import java.util.*;
 
+import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.mockito.Mockito.*;
 
 class MenuTest {
     @Test
     void expectsMenuToSelectProperOptionBasedOnInputString() {
-        Map<String, MenuOption> options = new HashMap<>();
         MenuOption checkout = mock(CheckoutOption.class);
-        options.put("Checkout",
-                checkout);
+        List<MenuOption> options = new ArrayList<>();
+        options.add(checkout);
         MenuOption defaultOption = mock(InvalidOption.class);
-        Menu menu = new Menu(options, defaultOption);
+        Menu menu = new Menu(options, defaultOption, new ConsoleUIDriver());
 
-        menu.select("Checkout");
+        menu.select("1");
 
         verify(checkout, atLeastOnce()).select();
     }
 
     @Test
     void expectsInvalidOptionToBeSelectedWhenInputIsInvalid() {
-        Map<String, MenuOption> options = new HashMap<>();
         MenuOption checkout = mock(CheckoutOption.class);
-        options.put("Checkout",
-                checkout);
+        List<MenuOption> options = new ArrayList<>();
+        options.add(checkout);
         MenuOption defaultOption = mock(InvalidOption.class);
-        Menu menu = new Menu(options, defaultOption);
+        Menu menu = new Menu(options, defaultOption, new ConsoleUIDriver());
 
         menu.select("random");
 
         verify(defaultOption, atLeastOnce()).select();
+    }
+
+    @Test
+    void expectsProperDisplayOptionsFromMenu() {
+        MenuOption checkout = new CheckoutOption("Checkout");
+        MenuOption invalid = new InvalidOption("Invalid");
+        Menu menu = new Menu(Collections.singletonList(checkout), invalid, new ConsoleUIDriver());
+
+        assertEquals(Collections.singletonList("Checkout"), menu.getDisplayOptions());
     }
 }

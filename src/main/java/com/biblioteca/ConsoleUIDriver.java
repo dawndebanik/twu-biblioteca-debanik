@@ -5,6 +5,7 @@ import com.biblioteca.format.ConsoleFormatter;
 import com.biblioteca.format.Formatter;
 import com.biblioteca.io.ConsoleIODriver;
 import com.biblioteca.io.IODriver;
+import com.biblioteca.menu.Menu;
 import com.biblioteca.menu.MenuOption;
 
 // represents how the user sees
@@ -31,11 +32,6 @@ public class ConsoleUIDriver extends UIDriver {
     }
 
     @Override
-    public void show(MenuOption option) {
-
-    }
-
-    @Override
     public void show(BookCollection collection) {
         ioDriver.display(formatter.format(collection));
     }
@@ -43,5 +39,10 @@ public class ConsoleUIDriver extends UIDriver {
     @Override
     public void show(String message) {
         ioDriver.display(formatter.format(message));
+    }
+
+    @Override
+    public void show(Menu menu) {
+        ioDriver.display(formatter.format(menu));
     }
 }

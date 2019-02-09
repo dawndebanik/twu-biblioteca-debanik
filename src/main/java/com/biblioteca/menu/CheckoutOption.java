@@ -17,7 +17,7 @@ public class CheckoutOption extends MenuOption {
         super(nameOnScreen, collection);
     }
 
-    CheckoutOption(String nameOnScreen) {
+    public CheckoutOption(String nameOnScreen) {
         super(nameOnScreen);
     }
 

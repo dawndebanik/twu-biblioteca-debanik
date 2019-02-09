@@ -13,7 +13,7 @@ public class ListBooksOption extends MenuOption {
         super(nameOnScreen, collection);
     }
 
-    ListBooksOption(String nameOnScreen) {
+    public ListBooksOption(String nameOnScreen) {
         super(nameOnScreen);
     }
 

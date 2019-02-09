@@ -14,7 +14,7 @@ public class InvalidOption extends MenuOption {
         super(nameOnScreen, collection);
     }
 
-    InvalidOption(String nameOnScreen) {
+    public InvalidOption(String nameOnScreen) {
         super(nameOnScreen);
     }
 
