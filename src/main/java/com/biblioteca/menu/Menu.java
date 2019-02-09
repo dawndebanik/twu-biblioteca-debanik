@@ -1,6 +1,7 @@
 package com.biblioteca.menu;
 
-import com.biblioteca.UIDriver;
+import com.biblioteca.menu.option.MenuOption;
+import ui.UIDriver;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -37,6 +38,7 @@ public class Menu {
         String userChoice;
         while (!(userChoice = uiDriver.readInput()).equalsIgnoreCase("quit")) {
             select(userChoice);
+            this.show();
         }
     }
 

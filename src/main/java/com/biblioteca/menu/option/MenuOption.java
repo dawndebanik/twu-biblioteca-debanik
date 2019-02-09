@@ -1,7 +1,7 @@
-package com.biblioteca.menu;
+package com.biblioteca.menu.option;
 
-import com.biblioteca.ConsoleUIDriver;
-import com.biblioteca.UIDriver;
+import ui.ConsoleUIDriver;
+import ui.UIDriver;
 import com.biblioteca.entities.BookCollection;
 import com.biblioteca.entities.FixedBookCollection;
 
@@ -25,7 +25,7 @@ public abstract class MenuOption {
         this(nameOnScreen, new FixedBookCollection(), new ConsoleUIDriver());
     }
 
-    String nameOnScreen(){
+    public String nameOnScreen(){
         return nameOnScreen;
     }
 

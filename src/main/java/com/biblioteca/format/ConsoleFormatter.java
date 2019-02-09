@@ -19,11 +19,20 @@ public class ConsoleFormatter implements Formatter {
     private static final String NEWLINE = "\n";
     private static final int COLUMN_COUNT = 3;
     private static final int ROW_SIZE = 32;
+    private static final String MENU_HEADER = "Menu:";
+    private static final String ENTER_NUMBER_PROMPT = "Enter the number next to the option you want to select";
+    private static final String QUIT_TO_EXIT_PROMPT = "Type 'quit' to exit the application.";
+    private static final String NO_BOOKS_AVAILABLE_PROMPT = "Sorry, no books are available right now.";
+    private static final String TABS_3 = "\t\t\t";
 
     @Override
     public String format(BookCollection collection) {
-        StringBuilder builder = new StringBuilder();
+        if (collection.isEmpty()){
+            return NO_BOOKS_AVAILABLE_PROMPT + NEWLINE + NEWLINE;
+        }
+
         List<Book> books = collection.getAvailableBooks();
+        StringBuilder builder = new StringBuilder();
         builder.append(AVAILABLE_BOOKS_HEADER + NEWLINE + NEWLINE);
         builder.append(rowBorder());
         builder.append(String.format(ROW_FORMAT, EMPTY_STRING, EMPTY_STRING, EMPTY_STRING));
@@ -45,13 +54,16 @@ public class ConsoleFormatter implements Formatter {
 
     @Override
     public String format(String message) {
-        return "\n***\t" + message + "\t***\n";
+        return message;
     }
 
     @Override
     public String format(Menu menu) {
         int menuIndex = 1;
-        StringBuilder builder = new StringBuilder("Menu:\n\n");
+        StringBuilder builder = new StringBuilder();
+        builder.append(ENTER_NUMBER_PROMPT + NEWLINE);
+        builder.append(QUIT_TO_EXIT_PROMPT + NEWLINE + NEWLINE);
+        builder.append(MENU_HEADER + NEWLINE + NEWLINE);
         List<String> optionNames = menu.getDisplayOptions();
         for (String optionName : optionNames) {
             builder.append(menuIndex).append(". ").append(optionName).append(NEWLINE);

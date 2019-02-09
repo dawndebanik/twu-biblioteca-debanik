@@ -1,6 +1,6 @@
-package com.biblioteca.menu;
+package com.biblioteca.menu.option;
 
-import com.biblioteca.UIDriver;
+import ui.UIDriver;
 import com.biblioteca.entities.BookCollection;
 
 public class ListBooksOption extends MenuOption {

@@ -4,13 +4,16 @@ import com.biblioteca.entities.FixedBookCollection;
 import com.biblioteca.format.ConsoleFormatter;
 import com.biblioteca.io.ConsoleIODriver;
 import com.biblioteca.io.IODriver;
-import com.biblioteca.menu.InvalidOption;
-import com.biblioteca.menu.ListBooksOption;
+import com.biblioteca.menu.option.InvalidOption;
+import com.biblioteca.menu.option.ListBooksOption;
 import com.biblioteca.menu.Menu;
 import org.junit.jupiter.api.Test;
+import ui.ConsoleUIDriver;
+import ui.UIDriver;
 
 import java.util.Collections;
 
+import static org.mockito.Matchers.contains;
 import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.verify;
 
@@ -22,7 +25,7 @@ class ConsoleUIDriverTest {
 
         consoleUIDriver.show("Hello world!");
 
-        verify(ioDriver).display("\n***\tHello world!\t***\n");
+        verify(ioDriver).display("Hello world!");
     }
 
     @Test
@@ -32,7 +35,7 @@ class ConsoleUIDriverTest {
 
         consoleUIDriver.show(new FixedBookCollection());
 
-        verify(ioDriver).display("Available books:\n" +
+        verify(ioDriver).display(contains("Available books:\n" +
                 "\n" +
                 "+--------------------------------+--------------------------------+--------------------------------+\n" +
                 "|                                |                                |                                |\n" +
@@ -42,7 +45,7 @@ class ConsoleUIDriverTest {
                 "|                  War and Peace |                    Leo Tolstoy |                           1867 |\n" +
                 "+--------------------------------+--------------------------------+--------------------------------+\n" +
                 "|          To Kill a Mockingbird |                     Harper Lee |                           1960 |\n" +
-                "+--------------------------------+--------------------------------+--------------------------------+\n");
+                "+--------------------------------+--------------------------------+--------------------------------+\n"));
     }
 
     @Test
@@ -54,6 +57,11 @@ class ConsoleUIDriverTest {
                 new Menu(Collections.singletonList(new ListBooksOption("List Books")),
                         new InvalidOption("Invalid"), consoleUIDriver));
 
-        verify(ioDriver).display("Menu:\n\n1. List Books\n");
+        verify(ioDriver).display("Enter the number next to the option you want to select\n" +
+                "Type 'quit' to exit the application.\n" +
+                "\n" +
+                "Menu:\n" +
+                "\n" +
+                "1. List Books\n");
     }
 }

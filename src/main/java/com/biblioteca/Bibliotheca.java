@@ -2,19 +2,20 @@ package com.biblioteca;
 
 import com.biblioteca.entities.BookCollection;
 import com.biblioteca.menu.Menu;
+import ui.UIDriver;
 
 // represents the library management system
-class Biblioteca {
+class Bibliotheca {
     private final UIDriver uiDriver;
     private final Menu menu;
 
-    Biblioteca(BookCollection bookCollection, UIDriver uiDriver, Menu menu) {
+    Bibliotheca(BookCollection bookCollection, UIDriver uiDriver, Menu menu) {
         this.uiDriver = uiDriver;
         this.menu = menu;
     }
 
     void run() {
-        uiDriver.show("Welcome to Biblioteca!");
+        uiDriver.show("Welcome to Bibliotheca!");
         menu.interact();
         /*uiDriver.showGreeting();*/
         /*uiDriver.showMenu();*/

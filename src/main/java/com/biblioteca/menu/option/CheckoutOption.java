@@ -1,13 +1,13 @@
-package com.biblioteca.menu;
+package com.biblioteca.menu.option;
 
 import com.biblioteca.BookNotAvailableException;
-import com.biblioteca.UIDriver;
+import ui.UIDriver;
 import com.biblioteca.entities.BookCollection;
 
 public class CheckoutOption extends MenuOption {
-    private static final String AVAILABLE_BOOKS_HEADER = "Available books:";
-    private static final String SUCCESSFUL_CHECKOUT_MESSAGE = "Thank you! Enjoy the book.";
-    private static final String UNSUCCESSFUL_CHECKOUT_MESSAGE = "That book is not available.";
+    private static final String SUCCESSFUL_CHECKOUT_MESSAGE = "Thank you! Enjoy the book.\n";
+    private static final String UNSUCCESSFUL_CHECKOUT_MESSAGE = "That book is not available. Maybe you spelt it wrong?\n";
+    private static final String ENTER_BOOK_NAME_PROMPT = "Enter the name of the book you want to check out: ";
 
     public CheckoutOption(String nameOnScreen, BookCollection collection, UIDriver uiDriver) {
         super(nameOnScreen, collection, uiDriver);
@@ -25,8 +25,11 @@ public class CheckoutOption extends MenuOption {
     @Override
     public void select() {
         uiDriver.show(collection);
-        String bookNameChoice =  uiDriver.readInput();
-
+        if (collection.isEmpty()) {
+            return;
+        }
+        uiDriver.show(ENTER_BOOK_NAME_PROMPT);
+        String bookNameChoice = uiDriver.readInput();
         try {
             collection.removeBook(bookNameChoice);
             uiDriver.show(SUCCESSFUL_CHECKOUT_MESSAGE);

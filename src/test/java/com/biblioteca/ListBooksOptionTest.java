@@ -4,9 +4,10 @@ import com.biblioteca.entities.FixedBookCollection;
 import com.biblioteca.format.ConsoleFormatter;
 import com.biblioteca.io.ConsoleIODriver;
 import com.biblioteca.io.IODriver;
-import com.biblioteca.menu.ListBooksOption;
-import com.biblioteca.menu.MenuOption;
+import com.biblioteca.menu.option.ListBooksOption;
+import com.biblioteca.menu.option.MenuOption;
 import org.junit.jupiter.api.Test;
+import ui.ConsoleUIDriver;
 
 import static org.mockito.Matchers.contains;
 import static org.mockito.Mockito.mock;
