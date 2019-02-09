@@ -1,6 +1,7 @@
 package com.biblioteca;
 
 import com.biblioteca.entities.FixedBookCollection;
+import com.biblioteca.format.ConsoleFormatter;
 import com.biblioteca.io.ConsoleIODriver;
 import com.biblioteca.io.IODriver;
 import org.junit.jupiter.api.Test;
@@ -15,7 +16,7 @@ class BibliotecaApplicationTest {
         BibliotecaApplication app =
                 new BibliotecaApplication(
                         new FixedBookCollection(),
-                        new ConsoleUI(consoleDriver));
+                        new ConsoleUIDriver(consoleDriver, new ConsoleFormatter()));
 
         app.run();
 
@@ -28,7 +29,7 @@ class BibliotecaApplicationTest {
         when(userEnters1.readInput()).thenReturn("1").thenReturn("quit");
         BibliotecaApplication app =
                 new BibliotecaApplication
-                        (new FixedBookCollection(), new ConsoleUI(userEnters1));
+                        (new FixedBookCollection(), new ConsoleUIDriver(userEnters1,  new ConsoleFormatter()));
 
 
         app.run();
@@ -44,7 +45,7 @@ class BibliotecaApplicationTest {
         when(userEntersInvalid.readInput()).thenReturn("5").thenReturn("quit");
         BibliotecaApplication app =
                 new BibliotecaApplication
-                        (new FixedBookCollection(), new ConsoleUI(userEntersInvalid));
+                        (new FixedBookCollection(), new ConsoleUIDriver(userEntersInvalid,  new ConsoleFormatter()));
 
         app.run();
 
@@ -58,7 +59,7 @@ class BibliotecaApplicationTest {
         when(consoleIODriver.readInput()).thenReturn("quit");
         BibliotecaApplication app =
                 new BibliotecaApplication
-                        (new FixedBookCollection(), new ConsoleUI(consoleIODriver));
+                        (new FixedBookCollection(), new ConsoleUIDriver(consoleIODriver,  new ConsoleFormatter()));
 
         app.run();
 
@@ -72,7 +73,7 @@ class BibliotecaApplicationTest {
         when(consoleIODriver.readInput()).thenReturn("quit");
         BibliotecaApplication app =
                 new BibliotecaApplication
-                        (new FixedBookCollection(), new ConsoleUI(consoleIODriver));
+                        (new FixedBookCollection(), new ConsoleUIDriver(consoleIODriver,  new ConsoleFormatter()));
 
         app.run();
 
@@ -87,7 +88,7 @@ class BibliotecaApplicationTest {
                 .thenReturn("2").thenReturn("War and Peace").thenReturn("1").thenReturn("quit");
         BibliotecaApplication app =
                 new BibliotecaApplication
-                        (new FixedBookCollection(), new ConsoleUI(consoleIODriver));
+                        (new FixedBookCollection(), new ConsoleUIDriver(consoleIODriver,  new ConsoleFormatter()));
 
         app.run();
 
@@ -104,7 +105,7 @@ class BibliotecaApplicationTest {
                 .thenReturn("2").thenReturn("War and Peace").thenReturn("1").thenReturn("quit");
         BibliotecaApplication app =
                 new BibliotecaApplication
-                        (new FixedBookCollection(), new ConsoleUI(consoleIODriver));
+                        (new FixedBookCollection(), new ConsoleUIDriver(consoleIODriver,  new ConsoleFormatter()));
 
         app.run();
 
@@ -113,13 +114,13 @@ class BibliotecaApplicationTest {
     }
 
     @Test
-    void expectsBookNotAvailableMessageWhenRequestedBookIsUnavaiable() {
+    void expectsBookNotAvailableMessageWhenRequestedBookIsUnavailable() {
         IODriver consoleIODriver = mock(ConsoleIODriver.class);
         when(consoleIODriver.readInput())
                 .thenReturn("2").thenReturn("Random book").thenReturn("1").thenReturn("quit");
         BibliotecaApplication app =
                 new BibliotecaApplication
-                        (new FixedBookCollection(), new ConsoleUI(consoleIODriver));
+                        (new FixedBookCollection(), new ConsoleUIDriver(consoleIODriver,  new ConsoleFormatter()));
 
         app.run();
 

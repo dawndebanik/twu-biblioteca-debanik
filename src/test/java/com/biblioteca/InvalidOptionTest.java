@@ -14,11 +14,12 @@ class InvalidOptionTest {
     @Test
     void expectsInvalidOptionPromptWhenChoiceIsInvalid() {
         IODriver ioDriver = mock(ConsoleIODriver.class);
-        MenuOption invalid = new InvalidOption(new FixedBookCollection(), ioDriver, new ConsoleFormatter());
+        MenuOption invalid =
+                new InvalidOption(null, new FixedBookCollection(), new ConsoleUIDriver(ioDriver, new ConsoleFormatter()));
         when(ioDriver.readInput()).thenReturn("9");
 
         invalid.select();
 
-        verify(ioDriver).display("Select a valid option!");
+        verify(ioDriver).display(contains("Select a valid option!"));
     }
 }

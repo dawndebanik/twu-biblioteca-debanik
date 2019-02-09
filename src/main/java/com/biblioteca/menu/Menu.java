@@ -6,6 +6,7 @@ import java.util.Map;
 public class Menu {
     private final Map<String, MenuOption> options;
     private final MenuOption defaultOption;
+
     public Menu(Map<String, MenuOption> options, MenuOption defaultOption) {
         this.options = new HashMap<>(options);
         this.defaultOption = defaultOption;
@@ -15,7 +16,4 @@ public class Menu {
         options.getOrDefault(option, defaultOption).select();
     }
 
-    public void ok(){
-
-    }
 }

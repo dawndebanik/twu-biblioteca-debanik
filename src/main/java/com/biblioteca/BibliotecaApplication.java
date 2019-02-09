@@ -5,39 +5,43 @@ import com.biblioteca.entities.BookCollection;
 // represents the library management system
 class BibliotecaApplication {
     private final BookCollection bookCollection;
-    private final UserInterface userInterface;
+    private final UIDriver UIDriver;
 
-    BibliotecaApplication(BookCollection bookCollection, UserInterface userInterface) {
+    BibliotecaApplication(BookCollection bookCollection, UIDriver UIDriver) {
         this.bookCollection = bookCollection;
-        this.userInterface = userInterface;
+        this.UIDriver = UIDriver;
 
     }
 
     void run() {
-        userInterface.showGreeting();
-        userInterface.showMenu();
+        /*UIDriver.showGreeting();*/
+        /*UIDriver.showMenu();*/
+/*
+*/
 
-        String userChoice;
-        while(!(userChoice = userInterface.getInput())
-                .equalsIgnoreCase("quit")){
+        /*String userChoice;*/
+        /*while(!(userChoice = UIDriver.getInput())*/
+        /*        .equalsIgnoreCase("quit")){*/
+/*
+*/
 
-            if (userChoice.equals(UserInterface.MENU_CHOICE_1)) {
-                userInterface.showBooks(bookCollection);
-            }
-            else if (userChoice.equals(UserInterface.MENU_CHOICE_2)){
-                userInterface.showBooks(bookCollection);
-                String bookNameChoice = userInterface.getInput();
-                try {
-                    bookCollection.removeBook(bookNameChoice);
-                    userInterface.showMessage("Thank you! Enjoy the book.");
-                } catch (BookNotAvailableException e) {
-                    userInterface.showMessage("That book is not available.");
-                }
-            }
-            else {
-                userInterface.showInvalidChoicePrompt();
-            }
-            userInterface.showMenu();
-        }
+        /*    if (userChoice.equals("1")) {*/
+        /*        UIDriver.showBooks(bookCollection);*/
+        /*    }*/
+        /*    else if (userChoice.equals("2")){*/
+        /*        UIDriver.showBooks(bookCollection);*/
+        /*        String bookNameChoice = UIDriver.getInput();*/
+        /*        try {*/
+        /*            bookCollection.removeBook(bookNameChoice);*/
+        /*            UIDriver.showMessage("Thank you! Enjoy the book.");*/
+        /*        } catch (BookNotAvailableException e) {*/
+        /*            UIDriver.showMessage("That book is not available.");*/
+        /*        }*/
+        /*    }*/
+        /*    else {*/
+        /*        UIDriver.showInvalidChoicePrompt();*/
+        /*    }*/
+        /*    UIDriver.showMenu();*/
+        /*}*/
     }
 }

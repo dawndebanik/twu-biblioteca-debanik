@@ -1,19 +1,32 @@
 package com.biblioteca.menu;
 
+import com.biblioteca.ConsoleUIDriver;
+import com.biblioteca.UIDriver;
 import com.biblioteca.entities.BookCollection;
-import com.biblioteca.format.Formatter;
-import com.biblioteca.io.IODriver;
+import com.biblioteca.entities.FixedBookCollection;
 
 // represents a point of choice offered to the user
 public abstract class MenuOption {
+    final UIDriver uiDriver;
+    final String nameOnScreen;
     final BookCollection collection;
-    final IODriver ioDriver;
-    final Formatter formatter;
 
-    MenuOption(BookCollection collection, IODriver ioDriver, Formatter formatter){
+    MenuOption(String nameOnScreen, BookCollection collection, UIDriver uiDriver) {
+        this.nameOnScreen = nameOnScreen;
         this.collection = collection;
-        this.ioDriver = ioDriver;
-        this.formatter = formatter;
+        this.uiDriver = uiDriver;
+    }
+
+    MenuOption(String nameOnScreen, BookCollection collection) {
+        this(nameOnScreen, collection, new ConsoleUIDriver());
+    }
+
+    MenuOption(String nameOnScreen) {
+        this(nameOnScreen, new FixedBookCollection(), new ConsoleUIDriver());
+    }
+
+    public String nameOnScreen(){
+        return nameOnScreen;
     }
 
     public abstract void select();

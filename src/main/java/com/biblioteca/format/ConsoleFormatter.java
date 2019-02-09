@@ -20,7 +20,7 @@ public class ConsoleFormatter implements Formatter {
     private static final int ROW_SIZE = 32;
 
     @Override
-    public String formatBookCollection(BookCollection collection) {
+    public String format(BookCollection collection) {
         StringBuilder builder = new StringBuilder();
         List<Book> books = collection.getAvailableBooks();
         builder.append(AVAILABLE_BOOKS_HEADER+ NEWLINE +NEWLINE);
@@ -31,16 +31,21 @@ public class ConsoleFormatter implements Formatter {
         builder.append(rowBorder());
 
         for (Book book : books) {
-            builder.append(formatBook(book));
+            builder.append(format(book));
         }
 
         return builder.toString();
     }
 
     @Override
-    public String formatBook(Book book) {
+    public String format(Book book) {
         return String.format(ROW_FORMAT,
                 book.name(), book.author(), book.year()) + rowBorder();
+    }
+
+    @Override
+    public String format(String message) {
+        return "\n***\t"+message+"\t***\n";
     }
 
     private String rowBorder() {

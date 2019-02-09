@@ -1,31 +1,33 @@
 package com.biblioteca;
 
-import com.biblioteca.entities.Book;
-import com.biblioteca.entities.BookCollection;
 import com.biblioteca.entities.FixedBookCollection;
 import com.biblioteca.format.ConsoleFormatter;
-import com.biblioteca.format.Formatter;
+import com.biblioteca.io.ConsoleIODriver;
+import com.biblioteca.io.IODriver;
 import org.junit.jupiter.api.Test;
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.mockito.Mockito.mock;
+import static org.mockito.Mockito.verify;
 
-class ConsoleFormatterTest {
+class ConsoleUIDriverTest {
     @Test
-    void expectsBookToBeFormattedProperly() {
-        Book aBook = new Book("Contact", "Carl Sagan", "1997");
-        Formatter formatter = new ConsoleFormatter();
-        String expected =
-                "|                        Contact |                     Carl Sagan |                           1997 |\n" +
-                "+--------------------------------+--------------------------------+--------------------------------+\n";
+    void expectsMessageToBeDisplayedProperly() {
+        IODriver ioDriver = mock(ConsoleIODriver.class);
+        UIDriver consoleUIDriver = new ConsoleUIDriver(ioDriver, new ConsoleFormatter());
 
-        assertEquals(expected, formatter.format(aBook));
+        consoleUIDriver.show("Hello world!");
+
+        verify(ioDriver).display("\n***\tHello world!\t***\n");
     }
 
     @Test
-    void expectsBookCollectionToBeFormattedProperly() {
-        BookCollection collection = new FixedBookCollection();
-        Formatter formatter = new ConsoleFormatter();
-        String expected = "Available books:\n" +
+    void expectsBookCollectionToBeDisplayedProperly() {
+        IODriver ioDriver = mock(ConsoleIODriver.class);
+        UIDriver consoleUIDriver = new ConsoleUIDriver(ioDriver, new ConsoleFormatter());
+
+        consoleUIDriver.show(new FixedBookCollection());
+
+        verify(ioDriver).display("Available books:\n" +
                 "\n" +
                 "+--------------------------------+--------------------------------+--------------------------------+\n" +
                 "|                                |                                |                                |\n" +
@@ -35,8 +37,6 @@ class ConsoleFormatterTest {
                 "|                  War and Peace |                    Leo Tolstoy |                           1867 |\n" +
                 "+--------------------------------+--------------------------------+--------------------------------+\n" +
                 "|          To Kill a Mockingbird |                     Harper Lee |                           1960 |\n" +
-                "+--------------------------------+--------------------------------+--------------------------------+\n";
-
-        assertEquals(expected, formatter.format(collection));
+                "+--------------------------------+--------------------------------+--------------------------------+\n");
     }
 }

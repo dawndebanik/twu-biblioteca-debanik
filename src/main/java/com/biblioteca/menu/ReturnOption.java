@@ -3,22 +3,22 @@ package com.biblioteca.menu;
 import com.biblioteca.UIDriver;
 import com.biblioteca.entities.BookCollection;
 
-public class ListBooksOption extends MenuOption {
+public class ReturnOption extends MenuOption{
 
-    public ListBooksOption(String nameOnScreen, BookCollection collection, UIDriver uiDriver) {
+    ReturnOption(String nameOnScreen, BookCollection collection, UIDriver uiDriver) {
         super(nameOnScreen, collection, uiDriver);
     }
 
-    ListBooksOption(String nameOnScreen, BookCollection collection) {
+    ReturnOption(String nameOnScreen, BookCollection collection) {
         super(nameOnScreen, collection);
     }
 
-    ListBooksOption(String nameOnScreen) {
+    ReturnOption(String nameOnScreen) {
         super(nameOnScreen);
     }
 
     @Override
     public void select() {
-        uiDriver.show(collection);
+
     }
 }

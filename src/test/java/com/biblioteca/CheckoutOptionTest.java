@@ -17,24 +17,26 @@ class CheckoutOptionTest {
         BookCollection collection = mock(FixedBookCollection.class);
         IODriver ioDriver = mock(ConsoleIODriver.class);
         MenuOption checkout =
-                new CheckoutOption(collection, ioDriver, new ConsoleFormatter());
+                new CheckoutOption("Checkout", collection,
+                        new ConsoleUIDriver(ioDriver, new ConsoleFormatter()));
         when(ioDriver.readInput()).thenReturn("War and Peace");
 
         checkout.select();
 
         verify(collection).removeBook("War and Peace");
-        verify(ioDriver).display("Thank you! Enjoy the book.");
+        verify(ioDriver).display(contains("Thank you! Enjoy the book."));
     }
 
     @Test
     void expectsCheckoutToBeUnsuccessfulWhenBookUnavailable() throws BookNotAvailableException{
         IODriver ioDriver = mock(ConsoleIODriver.class);
         MenuOption checkout =
-                new CheckoutOption(new FixedBookCollection(), ioDriver, new ConsoleFormatter());
+                new CheckoutOption("Checkout",
+                        new FixedBookCollection(), new ConsoleUIDriver(ioDriver, new ConsoleFormatter()));
         when(ioDriver.readInput()).thenReturn("Pride and Prejudice");
 
         checkout.select();
 
-        verify(ioDriver, atLeastOnce()).display("That book is not available.");
+        verify(ioDriver, atLeastOnce()).display(contains("That book is not available."));
     }
 }

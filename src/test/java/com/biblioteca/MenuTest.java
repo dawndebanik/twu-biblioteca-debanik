@@ -13,7 +13,7 @@ import static org.mockito.Mockito.*;
 
 class MenuTest {
     @Test
-    void expectsMenuToSelectProperOptionBasedOnInpurString() {
+    void expectsMenuToSelectProperOptionBasedOnInputString() {
         Map<String, MenuOption> options = new HashMap<>();
         MenuOption checkout = mock(CheckoutOption.class);
         options.put("Checkout",

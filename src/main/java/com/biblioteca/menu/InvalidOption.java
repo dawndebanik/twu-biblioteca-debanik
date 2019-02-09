@@ -1,18 +1,25 @@
 package com.biblioteca.menu;
 
+import com.biblioteca.UIDriver;
 import com.biblioteca.entities.BookCollection;
-import com.biblioteca.format.Formatter;
-import com.biblioteca.io.IODriver;
 
 public class InvalidOption extends MenuOption {
     private static final String PROMPT_INVALID_CHOICE = "Select a valid option!";
 
-    public InvalidOption(BookCollection collection, IODriver ioDriver, Formatter formatter) {
-        super(collection, ioDriver, formatter);
+    public InvalidOption(String nameOnScreen, BookCollection collection, UIDriver uiDriver) {
+        super(nameOnScreen, collection, uiDriver);
+    }
+
+    InvalidOption(String nameOnScreen, BookCollection collection) {
+        super(nameOnScreen, collection);
+    }
+
+    InvalidOption(String nameOnScreen) {
+        super(nameOnScreen);
     }
 
     @Override
     public void select() {
-        ioDriver.display(PROMPT_INVALID_CHOICE);
+        uiDriver.show(PROMPT_INVALID_CHOICE);
     }
 }

@@ -1,26 +1,37 @@
 package com.biblioteca.menu;
 
-import com.biblioteca.entities.BookCollection;
 import com.biblioteca.BookNotAvailableException;
-import com.biblioteca.format.Formatter;
-import com.biblioteca.io.IODriver;
+import com.biblioteca.UIDriver;
+import com.biblioteca.entities.BookCollection;
 
 public class CheckoutOption extends MenuOption {
     private static final String AVAILABLE_BOOKS_HEADER = "Available books:";
+    public static final String SUCCESSFUL_CHECKOUT_MESSAGE = "Thank you! Enjoy the book.";
+    public static final String UNSUCCESSFUL_CHECKOUT_MESSAGE = "That book is not available.";
 
-    public CheckoutOption(BookCollection collection, IODriver ioDriver, Formatter formatter) {
-        super(collection, ioDriver, formatter);
+    public CheckoutOption(String nameOnScreen, BookCollection collection, UIDriver uiDriver) {
+        super(nameOnScreen, collection, uiDriver);
     }
+
+    CheckoutOption(String nameOnScreen, BookCollection collection) {
+        super(nameOnScreen, collection);
+    }
+
+    CheckoutOption(String nameOnScreen) {
+        super(nameOnScreen);
+    }
+
 
     @Override
     public void select() {
-        ioDriver.display(formatter.formatBookCollection(collection));
-        String bookNameChoice = ioDriver.readInput();
+        uiDriver.show(collection);
+        String bookNameChoice =  uiDriver.getInput();
+
         try {
             collection.removeBook(bookNameChoice);
-            ioDriver.display("Thank you! Enjoy the book.");
+            uiDriver.show(SUCCESSFUL_CHECKOUT_MESSAGE);
         } catch (BookNotAvailableException exception) {
-            ioDriver.display("That book is not available.");
+            uiDriver.show(UNSUCCESSFUL_CHECKOUT_MESSAGE);
         }
     }
 }

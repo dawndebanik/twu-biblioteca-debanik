@@ -8,6 +8,7 @@ import com.biblioteca.menu.ListBooksOption;
 import com.biblioteca.menu.MenuOption;
 import org.junit.jupiter.api.Test;
 
+import static org.mockito.Matchers.contains;
 import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.verify;
 
@@ -15,20 +16,12 @@ class ListBooksOptionTest {
     @Test
     void expectsListOfBooksToBePrintedWhenSelected() {
         IODriver ioDriver = mock(ConsoleIODriver.class);
-        MenuOption listBooks = new ListBooksOption(
-                new FixedBookCollection(), ioDriver, new ConsoleFormatter());
+        MenuOption listBooks =
+                new ListBooksOption("List Books", new FixedBookCollection(), new ConsoleUIDriver(ioDriver, new ConsoleFormatter()));
 
         listBooks.select();
 
-        verify(ioDriver).display("Available books:\n\n"+
-                "+--------------------------------+--------------------------------+--------------------------------+\n"+
-                "|                                |                                |                                |\n"+
-                "|                           Name |                         Author |             Year of Publishing |\n"+
-                "|                                |                                |                                |\n"+
-                "+--------------------------------+--------------------------------+--------------------------------+\n"+
-                "|                  War and Peace |                    Leo Tolstoy |                           1867 |\n"+
-                "+--------------------------------+--------------------------------+--------------------------------+\n"+
-                "|          To Kill a Mockingbird |                     Harper Lee |                           1960 |\n"+
-                "+--------------------------------+--------------------------------+--------------------------------+\n");
+        verify(ioDriver).display(contains("War and Peace"));
+        verify(ioDriver).display(contains("To Kill a Mockingbird"));
     }
 }
