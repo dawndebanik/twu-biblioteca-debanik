@@ -8,19 +8,20 @@ import com.biblioteca.menu.option.InvalidOption;
 import com.biblioteca.menu.option.MenuOption;
 import org.junit.jupiter.api.Test;
 import ui.ConsoleUIDriver;
+import ui.UIDriver;
 
 import static org.mockito.Mockito.*;
 
 class InvalidOptionTest {
     @Test
     void expectsInvalidOptionPromptWhenChoiceIsInvalid() {
-        IODriver ioDriver = mock(ConsoleIODriver.class);
+        UIDriver consoleDriver = mock(ConsoleUIDriver.class);
         MenuOption invalid =
-                new InvalidOption(null, new FixedBookCollection(), new ConsoleUIDriver(ioDriver, new ConsoleFormatter()));
-        when(ioDriver.readInput()).thenReturn("9");
+                new InvalidOption("Select a valid option!", new FixedBookCollection(), consoleDriver);
+        when(consoleDriver.readInput()).thenReturn("9");
 
         invalid.select();
 
-        verify(ioDriver).display(contains("Select a valid option!"));
+        verify(consoleDriver).show(contains("Select a valid option!"));
     }
 }

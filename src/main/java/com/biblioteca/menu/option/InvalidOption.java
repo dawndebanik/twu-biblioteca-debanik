@@ -4,7 +4,6 @@ import ui.UIDriver;
 import com.biblioteca.entities.BookCollection;
 
 public class InvalidOption extends MenuOption {
-    private static final String PROMPT_INVALID_CHOICE = "Select a valid option!";
 
     public InvalidOption(String nameOnScreen, BookCollection collection, UIDriver uiDriver) {
         super(nameOnScreen, collection, uiDriver);
@@ -20,6 +19,6 @@ public class InvalidOption extends MenuOption {
 
     @Override
     public void select() {
-        uiDriver.show(PROMPT_INVALID_CHOICE);
+        uiDriver.show(nameOnScreen);
     }
 }
