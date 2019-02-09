@@ -25,7 +25,7 @@ public abstract class MenuOption {
         this(nameOnScreen, new FixedBookCollection(), new ConsoleUIDriver());
     }
 
-    public String nameOnScreen(){
+    String nameOnScreen(){
         return nameOnScreen;
     }
 

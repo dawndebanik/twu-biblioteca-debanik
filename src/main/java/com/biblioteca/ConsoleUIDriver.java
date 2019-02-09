@@ -27,7 +27,7 @@ public class ConsoleUIDriver extends UIDriver {
     }
 
     @Override
-    public String getInput() {
+    public String readInput() {
         return ioDriver.readInput().trim();
     }
 

@@ -9,7 +9,7 @@ public class ListBooksOption extends MenuOption {
         super(nameOnScreen, collection, uiDriver);
     }
 
-    ListBooksOption(String nameOnScreen, BookCollection collection) {
+    public ListBooksOption(String nameOnScreen, BookCollection collection) {
         super(nameOnScreen, collection);
     }
 

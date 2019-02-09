@@ -23,7 +23,7 @@ public abstract class UIDriver {
         this(new ConsoleIODriver(), new ConsoleFormatter());
     }
 
-    public abstract String getInput();
+    public abstract String readInput();
     public abstract void show(BookCollection collection);
     public abstract void show(String message);
     public abstract void show(Menu menu);

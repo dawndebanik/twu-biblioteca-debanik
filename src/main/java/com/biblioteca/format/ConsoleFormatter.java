@@ -40,8 +40,7 @@ public class ConsoleFormatter implements Formatter {
 
     @Override
     public String format(Book book) {
-        return String.format(ROW_FORMAT,
-                book.name(), book.author(), book.year()) + rowBorder();
+        return String.format(ROW_FORMAT, book.name(), book.author(), book.year()) + rowBorder();
     }
 
     @Override
@@ -56,6 +55,7 @@ public class ConsoleFormatter implements Formatter {
         List<String> optionNames = menu.getDisplayOptions();
         for (String optionName : optionNames) {
             builder.append(menuIndex).append(". ").append(optionName).append(NEWLINE);
+            menuIndex++;
         }
         return builder.toString();
     }

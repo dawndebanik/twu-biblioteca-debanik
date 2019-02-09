@@ -3,7 +3,10 @@ package com.biblioteca;
 import com.biblioteca.menu.*;
 import org.junit.jupiter.api.Test;
 
-import java.util.*;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.Collections;
+import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.mockito.Mockito.*;
@@ -42,5 +45,60 @@ class MenuTest {
         Menu menu = new Menu(Collections.singletonList(checkout), invalid, new ConsoleUIDriver());
 
         assertEquals(Collections.singletonList("Checkout"), menu.getDisplayOptions());
+    }
+
+    @Test
+    void expectsExitToBeShownWhenUserEntersQuit() {
+        UIDriver userEnters1 = mock(ConsoleUIDriver.class);
+        MenuOption listBooks = mock(ListBooksOption.class);
+        MenuOption checkout = mock(CheckoutOption.class);
+        when(userEnters1.readInput()).thenReturn("quit");
+        Menu menu = new Menu(Arrays.asList(listBooks, checkout), mock(InvalidOption.class), userEnters1);
+
+        menu.interact();
+
+        verify(listBooks, never()).select();
+        verify(checkout, never()).select();
+    }
+    @Test
+    void expectsBookListToBeShownWhenUserEnters1() {
+        UIDriver userEnters1 = mock(ConsoleUIDriver.class);
+        MenuOption listBooks = mock(ListBooksOption.class);
+        when(userEnters1.readInput()).thenReturn("1").thenReturn("quit");
+        Menu menu = new Menu(Arrays.asList(listBooks), mock(InvalidOption.class), userEnters1);
+
+        menu.interact();
+
+        verify(listBooks, atLeastOnce()).select();
+    }
+
+    @Test
+    void expectsCheckoutOptionSelectedWhenUserEnters2() {
+        UIDriver userEnters2 = mock(ConsoleUIDriver.class);
+        MenuOption listBooks = mock(ListBooksOption.class);
+        MenuOption checkout = mock(CheckoutOption.class);
+        when(userEnters2.readInput()).thenReturn("2").thenReturn("quit");
+        Menu menu = new Menu(Arrays.asList(listBooks, checkout), mock(InvalidOption.class), userEnters2);
+
+        menu.interact();
+
+        verify(listBooks, never()).select();
+        verify(checkout, atLeastOnce()).select();
+    }
+
+    @Test
+    void expectsInvalidOptionSelectedWhenUserEntersInvalidInput() {
+        UIDriver userEnters2 = mock(ConsoleUIDriver.class);
+        MenuOption listBooks = mock(ListBooksOption.class);
+        MenuOption checkout = mock(CheckoutOption.class);
+        when(userEnters2.readInput()).thenReturn("random").thenReturn("quit");
+        InvalidOption invalidOption = mock(InvalidOption.class);
+        Menu menu = new Menu(Arrays.asList(listBooks, checkout), invalidOption, userEnters2);
+
+        menu.interact();
+
+        verify(listBooks, never()).select();
+        verify(checkout, never()).select();
+        verify(invalidOption, atLeastOnce()).select();
     }
 }
