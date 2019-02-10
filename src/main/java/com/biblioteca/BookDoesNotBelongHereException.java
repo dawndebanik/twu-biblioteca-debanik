@@ -1,7 +1,7 @@
 package com.biblioteca;
 
-import com.biblioteca.entities.ItemDoesNotBelongHereException;
-
+// represents a special case where the book trying to be added
+// does not belong to bibliotheca
 public class BookDoesNotBelongHereException extends ItemDoesNotBelongHereException {
     public BookDoesNotBelongHereException(String message) {
         super(message);

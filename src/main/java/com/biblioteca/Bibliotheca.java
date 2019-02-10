@@ -1,11 +1,12 @@
 package com.biblioteca;
 
-import com.biblioteca.entities.BookCollection;
 import com.biblioteca.menu.Menu;
 import ui.UIDriver;
 
 // represents the library management system
 class Bibliotheca {
+    private static final String WELCOME_MESSAGE = "Welcome to Bibliotheca!";
+    private static final String GOODBYE_MESSAGE = "Goodbye! Thanks for using Bibliotheca!";
     private final UIDriver uiDriver;
     private final Menu menu;
 
@@ -15,7 +16,8 @@ class Bibliotheca {
     }
 
     void run() {
-        uiDriver.show("Welcome to Bibliotheca!");
+        uiDriver.show(WELCOME_MESSAGE);
         menu.interact();
+        uiDriver.show(GOODBYE_MESSAGE);
     }
 }

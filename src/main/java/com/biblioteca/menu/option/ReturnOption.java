@@ -2,7 +2,7 @@ package com.biblioteca.menu.option;
 
 import com.biblioteca.entities.BookCollection;
 import com.biblioteca.entities.ItemCollection;
-import com.biblioteca.entities.ItemDoesNotBelongHereException;
+import com.biblioteca.ItemDoesNotBelongHereException;
 import ui.UIDriver;
 
 // represents the choice of the user to return an item

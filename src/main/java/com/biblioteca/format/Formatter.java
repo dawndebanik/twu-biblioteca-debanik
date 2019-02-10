@@ -1,7 +1,5 @@
 package com.biblioteca.format;
 
-import com.biblioteca.entities.Book;
-import com.biblioteca.entities.BookCollection;
 import com.biblioteca.entities.Item;
 import com.biblioteca.entities.ItemCollection;
 import com.biblioteca.menu.Menu;

@@ -27,7 +27,7 @@ public class ConsoleFormatter implements Formatter {
     private static final int COLUMN_COUNT_BOOK = 3;
     private static final int ROW_SIZE = 32;
     private static final String HEADER_RATING = "Rating";
-    public static final int COLUMN_COUNT_MOVIE = 4;
+    private static final int COLUMN_COUNT_MOVIE = 4;
 
     @Override
     public String format(ItemCollection collection) {

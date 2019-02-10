@@ -2,7 +2,6 @@ package com.biblioteca;
 
 import com.biblioteca.entities.BookCollection;
 import com.biblioteca.entities.FixedBookCollection;
-import com.biblioteca.entities.ItemNotAvailableException;
 import com.biblioteca.format.ConsoleFormatter;
 import com.biblioteca.io.ConsoleIODriver;
 import com.biblioteca.io.IODriver;

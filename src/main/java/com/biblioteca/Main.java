@@ -12,6 +12,7 @@ import ui.UIDriver;
 import java.util.ArrayList;
 import java.util.List;
 
+// launcher for the application
 public class Main {
     private static BookCollection bookCollection = new FixedBookCollection();
     private static MovieCollection movieCollection = new FixedMovieCollection();
