@@ -5,7 +5,7 @@ import com.biblioteca.format.ConsoleFormatter;
 import com.biblioteca.io.ConsoleIODriver;
 import com.biblioteca.io.IODriver;
 import com.biblioteca.menu.option.InvalidOption;
-import com.biblioteca.menu.option.ListBooksOption;
+import com.biblioteca.menu.option.ListItemsOption;
 import com.biblioteca.menu.Menu;
 import org.junit.jupiter.api.Test;
 import ui.ConsoleUIDriver;
@@ -54,7 +54,7 @@ class ConsoleUIDriverTest {
         UIDriver consoleUIDriver = new ConsoleUIDriver(ioDriver, new ConsoleFormatter());
 
         consoleUIDriver.show(
-                new Menu(Collections.singletonList(new ListBooksOption("List Books")),
+                new Menu(Collections.singletonList(new ListItemsOption("List Books")),
                         new InvalidOption("Invalid"), consoleUIDriver));
 
         verify(ioDriver).display("Enter the number next to the option you want to select\n" +

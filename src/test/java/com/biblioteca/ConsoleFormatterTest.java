@@ -6,7 +6,7 @@ import com.biblioteca.entities.FixedBookCollection;
 import com.biblioteca.format.ConsoleFormatter;
 import com.biblioteca.format.Formatter;
 import com.biblioteca.menu.option.InvalidOption;
-import com.biblioteca.menu.option.ListBooksOption;
+import com.biblioteca.menu.option.ListItemsOption;
 import com.biblioteca.menu.Menu;
 import com.biblioteca.menu.option.MenuOption;
 import org.junit.jupiter.api.Test;
@@ -51,7 +51,7 @@ class ConsoleFormatterTest {
 
     @Test
     void expectsMenuToBeFormattedProperly() {
-        MenuOption listBooks = new ListBooksOption("List Books");
+        MenuOption listBooks = new ListItemsOption("List Books");
         Menu menu = new Menu(Collections.singletonList(listBooks), mock(InvalidOption.class), new ConsoleUIDriver());
         Formatter formatter = new ConsoleFormatter();
         String expected = "Enter the number next to the option you want to select\n" +

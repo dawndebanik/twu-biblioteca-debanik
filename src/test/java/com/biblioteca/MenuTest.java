@@ -1,9 +1,9 @@
 package com.biblioteca;
 
 import com.biblioteca.menu.*;
-import com.biblioteca.menu.option.CheckoutBookOption;
+import com.biblioteca.menu.option.CheckoutOption;
 import com.biblioteca.menu.option.InvalidOption;
-import com.biblioteca.menu.option.ListBooksOption;
+import com.biblioteca.menu.option.ListItemsOption;
 import com.biblioteca.menu.option.MenuOption;
 import org.junit.jupiter.api.Test;
 import ui.ConsoleUIDriver;
@@ -20,7 +20,7 @@ import static org.mockito.Mockito.*;
 class MenuTest {
     @Test
     void expectsMenuToSelectProperOptionBasedOnInputString() {
-        MenuOption checkout = mock(CheckoutBookOption.class);
+        MenuOption checkout = mock(CheckoutOption.class);
         List<MenuOption> options = new ArrayList<>();
         options.add(checkout);
         MenuOption defaultOption = mock(InvalidOption.class);
@@ -33,7 +33,7 @@ class MenuTest {
 
     @Test
     void expectsInvalidOptionToBeSelectedWhenInputIsInvalid() {
-        MenuOption checkout = mock(CheckoutBookOption.class);
+        MenuOption checkout = mock(CheckoutOption.class);
         List<MenuOption> options = new ArrayList<>();
         options.add(checkout);
         MenuOption defaultOption = mock(InvalidOption.class);
@@ -46,7 +46,7 @@ class MenuTest {
 
     @Test
     void expectsProperDisplayOptionsFromMenu() {
-        MenuOption checkout = new CheckoutBookOption("Checkout");
+        MenuOption checkout = new CheckoutOption("Checkout");
         MenuOption invalid = new InvalidOption("Invalid");
         Menu menu = new Menu(Collections.singletonList(checkout), invalid, new ConsoleUIDriver());
 
@@ -56,8 +56,8 @@ class MenuTest {
     @Test
     void expectsExitToBeShownWhenUserEntersQuit() {
         UIDriver userEnters1 = mock(ConsoleUIDriver.class);
-        MenuOption listBooks = mock(ListBooksOption.class);
-        MenuOption checkout = mock(CheckoutBookOption.class);
+        MenuOption listBooks = mock(ListItemsOption.class);
+        MenuOption checkout = mock(CheckoutOption.class);
         when(userEnters1.readInput()).thenReturn("quit");
         Menu menu = new Menu(Arrays.asList(listBooks, checkout), mock(InvalidOption.class), userEnters1);
 
@@ -69,7 +69,7 @@ class MenuTest {
     @Test
     void expectsBookListToBeShownWhenUserEnters1() {
         UIDriver userEnters1 = mock(ConsoleUIDriver.class);
-        MenuOption listBooks = mock(ListBooksOption.class);
+        MenuOption listBooks = mock(ListItemsOption.class);
         when(userEnters1.readInput()).thenReturn("1").thenReturn("quit");
         Menu menu = new Menu(Arrays.asList(listBooks), mock(InvalidOption.class), userEnters1);
 
@@ -81,8 +81,8 @@ class MenuTest {
     @Test
     void expectsCheckoutOptionSelectedWhenUserEnters2() {
         UIDriver userEnters2 = mock(ConsoleUIDriver.class);
-        MenuOption listBooks = mock(ListBooksOption.class);
-        MenuOption checkout = mock(CheckoutBookOption.class);
+        MenuOption listBooks = mock(ListItemsOption.class);
+        MenuOption checkout = mock(CheckoutOption.class);
         when(userEnters2.readInput()).thenReturn("2").thenReturn("quit");
         Menu menu = new Menu(Arrays.asList(listBooks, checkout), mock(InvalidOption.class), userEnters2);
 
@@ -95,8 +95,8 @@ class MenuTest {
     @Test
     void expectsInvalidOptionSelectedWhenUserEntersInvalidInput() {
         UIDriver userEnters2 = mock(ConsoleUIDriver.class);
-        MenuOption listBooks = mock(ListBooksOption.class);
-        MenuOption checkout = mock(CheckoutBookOption.class);
+        MenuOption listBooks = mock(ListItemsOption.class);
+        MenuOption checkout = mock(CheckoutOption.class);
         when(userEnters2.readInput()).thenReturn("random").thenReturn("quit");
         InvalidOption invalidOption = mock(InvalidOption.class);
         Menu menu = new Menu(Arrays.asList(listBooks, checkout), invalidOption, userEnters2);

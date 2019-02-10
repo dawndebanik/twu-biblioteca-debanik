@@ -1,19 +1,19 @@
 package com.biblioteca.menu.option;
 
+import com.biblioteca.entities.ItemCollection;
 import ui.UIDriver;
-import com.biblioteca.entities.BookCollection;
 
 // represents the choice of the user to see all books
-public class ListBooksOption extends MenuOption {
-    public ListBooksOption(String nameOnScreen, BookCollection collection, UIDriver uiDriver) {
+public class ListItemsOption extends MenuOption {
+    public ListItemsOption(String nameOnScreen, ItemCollection collection, UIDriver uiDriver) {
         super(nameOnScreen, collection, uiDriver);
     }
 
-    public ListBooksOption(String nameOnScreen, BookCollection collection) {
+    public ListItemsOption(String nameOnScreen, ItemCollection collection) {
         super(nameOnScreen, collection);
     }
 
-    public ListBooksOption(String nameOnScreen) {
+    public ListItemsOption(String nameOnScreen) {
         super(nameOnScreen);
     }
 

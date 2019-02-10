@@ -2,6 +2,7 @@ package com.biblioteca.format;
 
 import com.biblioteca.entities.Book;
 import com.biblioteca.entities.BookCollection;
+import com.biblioteca.entities.Item;
 import com.biblioteca.entities.ItemCollection;
 import com.biblioteca.menu.Menu;
 
@@ -9,7 +10,7 @@ import com.biblioteca.menu.Menu;
 // in a particular way to the user
 public interface Formatter {
     String format(ItemCollection collection);
-    String format(Book book);
+    String format(Item item);
     String format(String message);
     String format(Menu menu);
 }
