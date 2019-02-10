@@ -12,7 +12,7 @@ import java.util.stream.Collectors;
 public class FixedMovieCollection implements MovieCollection {
     private static final String MOVIE_NOT_CHECKED_OUT_MESSAGE = "This movie was not checked out";
     private static final String MOVIE_UNAVAILABLE_MESSAGE = "No movie with the requested name is available";
-    public static final int EMPTY_LIST_SIZE = 0;
+    private static final int EMPTY_LIST_SIZE = 0;
 
     private List<Movie> availableMovies = new ArrayList<>(Arrays.asList(
             new Movie("Pulp Fiction", "Quentin Tarantino", "1994", 9),
