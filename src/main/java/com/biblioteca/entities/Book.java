@@ -1,8 +1,5 @@
 package com.biblioteca.entities;
 
-import java.util.Arrays;
-import java.util.Objects;
-
 // represents a bound set of blank sheets for writing in
 public class Book implements Item{
     private final String name;

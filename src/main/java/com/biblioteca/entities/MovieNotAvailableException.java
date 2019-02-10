@@ -1,7 +1,7 @@
 package com.biblioteca.entities;
 
-public class MovieNotAvailableException extends ItemNotAvailableException {
-    public MovieNotAvailableException(String message) {
+class MovieNotAvailableException extends ItemNotAvailableException {
+    MovieNotAvailableException(String message) {
         super(message);
     }
 }

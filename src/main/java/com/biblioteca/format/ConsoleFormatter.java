@@ -24,10 +24,10 @@ public class ConsoleFormatter implements Formatter {
     private static final String QUIT_TO_EXIT_PROMPT = "Type 'quit' to exit the application.";
     private static final String NO_BOOKS_AVAILABLE_PROMPT = "Sorry, no books are available right now.";
     private static final String NO_MOVIES_AVAILABLE_PROMPT = "Sorry, no movies are available right now.";
-    private static final String TABS_3 = "\t\t\t";
-    private static final int COLUMN_COUNT = 3;
+    private static final int COLUMN_COUNT_BOOK = 3;
     private static final int ROW_SIZE = 32;
-    public static final String HEADER_RATING = "Rating";
+    private static final String HEADER_RATING = "Rating";
+    public static final int COLUMN_COUNT_MOVIE = 4;
 
     @Override
     public String format(ItemCollection collection) {
@@ -65,10 +65,10 @@ public class ConsoleFormatter implements Formatter {
         return builder.toString();
     }
 
-    private String rowBorder() {
+    private String rowBorder(int columns) {
         StringBuilder builder = new StringBuilder();
         builder.append(PLUS);
-        for (int i = 0; i < COLUMN_COUNT; i++) {
+        for (int i = 0; i < columns; i++) {
             for (int j = 0; j < ROW_SIZE; j++) {
                 builder.append(MINUS);
             }
@@ -85,11 +85,11 @@ public class ConsoleFormatter implements Formatter {
         List<Item> books = collection.getAvailable();
         StringBuilder builder = new StringBuilder();
         builder.append(AVAILABLE_BOOKS_HEADER + NEWLINE + NEWLINE);
-        builder.append(rowBorder());
+        builder.append(rowBorder(COLUMN_COUNT_BOOK));
         builder.append(String.format(BOOK_ROW_FORMAT, EMPTY_STRING, EMPTY_STRING, EMPTY_STRING));
         builder.append(String.format(BOOK_ROW_FORMAT, HEADER_NAME, HEADER_AUTHOR, HEADER_YEAR));
         builder.append(String.format(BOOK_ROW_FORMAT, EMPTY_STRING, EMPTY_STRING, EMPTY_STRING));
-        builder.append(rowBorder());
+        builder.append(rowBorder(COLUMN_COUNT_BOOK));
 
         for (Item bookItem : books) {
             Book book = (Book) bookItem;
@@ -100,11 +100,12 @@ public class ConsoleFormatter implements Formatter {
     }
 
     private String format(Book book) {
-        return String.format(BOOK_ROW_FORMAT, book.name(), book.author(), book.year()) + rowBorder();
+        return String.format(BOOK_ROW_FORMAT, book.name(), book.author(), book.year()) + rowBorder(COLUMN_COUNT_BOOK);
     }
 
     private String format(Movie movie) {
-        return String.format(MOVIE_ROW_FORMAT, movie.name(), movie.director(), movie.year(), movie.rating()) + rowBorder();
+        return String.format(MOVIE_ROW_FORMAT, movie.name(), movie.director(), movie.year(), movie.rating())
+                + rowBorder(COLUMN_COUNT_MOVIE);
     }
 
     private String format(MovieCollection collection) {
@@ -115,11 +116,11 @@ public class ConsoleFormatter implements Formatter {
         List<Item> movies = collection.getAvailable();
         StringBuilder builder = new StringBuilder();
         builder.append(AVAILABLE_MOVIES_HEADER + NEWLINE + NEWLINE);
-        builder.append(rowBorder());
+        builder.append(rowBorder(COLUMN_COUNT_MOVIE));
         builder.append(String.format(MOVIE_ROW_FORMAT, EMPTY_STRING, EMPTY_STRING, EMPTY_STRING, EMPTY_STRING));
         builder.append(String.format(MOVIE_ROW_FORMAT, HEADER_NAME, HEADER_DIRECTOR, HEADER_YEAR, HEADER_RATING));
         builder.append(String.format(MOVIE_ROW_FORMAT, EMPTY_STRING, EMPTY_STRING, EMPTY_STRING, EMPTY_STRING));
-        builder.append(rowBorder());
+        builder.append(rowBorder(COLUMN_COUNT_MOVIE));
 
         for (Item movieItem : movies) {
             Movie movie = (Movie) movieItem;
