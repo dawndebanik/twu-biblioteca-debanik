@@ -2,6 +2,8 @@ package com.biblioteca;
 
 import com.biblioteca.entities.BookCollection;
 import com.biblioteca.entities.FixedBookCollection;
+import com.biblioteca.entities.FixedMovieCollection;
+import com.biblioteca.entities.MovieCollection;
 import com.biblioteca.menu.*;
 import com.biblioteca.menu.option.*;
 import ui.ConsoleUIDriver;
@@ -11,7 +13,8 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Main {
-    private static BookCollection collection = new FixedBookCollection();
+    private static BookCollection bookCollection = new FixedBookCollection();
+    private static MovieCollection movieCollection = new FixedMovieCollection();
     private static UIDriver consoleDriver = new ConsoleUIDriver();
     private static Menu defaultMenu = defaultMenu();
 
@@ -23,15 +26,23 @@ public class Main {
     }
 
     private static Menu defaultMenu() {
-        MenuOption listBooks = new ListItemsOption("List books", collection, consoleDriver);
-        MenuOption checkout = new CheckoutOption("Checkout a book", collection, consoleDriver);
-        MenuOption invalid = new InvalidOption("Select a valid option!", collection, consoleDriver);
-        MenuOption returnBook = new ReturnBookOption("Return a book", collection, consoleDriver);
+        MenuOption listBooks = new ListItemsOption("List books", bookCollection, consoleDriver);
+        MenuOption checkoutBooks = new CheckoutOption("Checkout a book", bookCollection, consoleDriver);
+        MenuOption returnBook = new ReturnOption("Return a book", bookCollection, consoleDriver);
+
+        MenuOption listMovies = new ListItemsOption("List movies", movieCollection, consoleDriver);
+        MenuOption checkoutMovies = new CheckoutOption("Checkout a movie", movieCollection, consoleDriver);
+        MenuOption returnMovie = new ReturnOption("Return a movie", movieCollection, consoleDriver);
+
+        MenuOption invalid = new InvalidOption("Select a valid option!", bookCollection, consoleDriver);
 
         List<MenuOption> options = new ArrayList<>();
         options.add(listBooks);
-        options.add(checkout);
+        options.add(checkoutBooks);
         options.add(returnBook);
+        options.add(listMovies);
+        options.add(checkoutMovies);
+        options.add(returnMovie);
 
         return new Menu(options, invalid, consoleDriver);
     }
