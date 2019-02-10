@@ -17,7 +17,7 @@ public class Main {
 
     public static void main(String[] args) {
         Bibliotheca application =
-                new Bibliotheca(collection, consoleDriver, defaultMenu);
+                new Bibliotheca(consoleDriver, defaultMenu);
 
         application.run();
     }

@@ -22,7 +22,6 @@ class BibliothecaTest {
         when(consoleDriver.readInput()).thenReturn("1").thenReturn("quit");
         Bibliotheca app =
                 new Bibliotheca(
-                        new FixedBookCollection(),
                         consoleDriver,
                         defaultMenuWith(consoleDriver));
 
