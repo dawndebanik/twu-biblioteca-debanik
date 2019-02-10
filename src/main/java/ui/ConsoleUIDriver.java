@@ -1,6 +1,7 @@
 package ui;
 
 import com.biblioteca.entities.BookCollection;
+import com.biblioteca.entities.ItemCollection;
 import com.biblioteca.format.ConsoleFormatter;
 import com.biblioteca.format.Formatter;
 import com.biblioteca.io.ConsoleIODriver;
@@ -28,7 +29,7 @@ public class ConsoleUIDriver implements UIDriver {
     }
 
     @Override
-    public void show(BookCollection collection) {
+    public void show(ItemCollection collection) {
         ioDriver.display(formatter.format(collection));
     }
 

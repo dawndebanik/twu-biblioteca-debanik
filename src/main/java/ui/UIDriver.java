@@ -1,6 +1,7 @@
 package ui;
 
 import com.biblioteca.entities.BookCollection;
+import com.biblioteca.entities.ItemCollection;
 import com.biblioteca.menu.Menu;
 
 // represents a contract how the interaction
@@ -8,7 +9,7 @@ import com.biblioteca.menu.Menu;
 public interface UIDriver {
 
     String readInput();
-    void show(BookCollection collection);
+    void show(ItemCollection collection);
     void show(String message);
     void show(Menu menu);
 }

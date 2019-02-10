@@ -3,13 +3,13 @@ package com.biblioteca.format;
 import com.biblioteca.entities.Book;
 import com.biblioteca.entities.BookCollection;
 import com.biblioteca.entities.Item;
+import com.biblioteca.entities.ItemCollection;
 import com.biblioteca.menu.Menu;
 
 import java.util.List;
 
 // represents how data is showed on the console
 public class ConsoleFormatter implements Formatter {
-
     private static final String ROW_FORMAT = "| %1$30s | %2$30s | %3$30s |\n";
     private static final String AVAILABLE_BOOKS_HEADER = "Available books:";
     private static final String EMPTY_STRING = "";
@@ -28,26 +28,11 @@ public class ConsoleFormatter implements Formatter {
     private static final String TABS_3 = "\t\t\t";
 
     @Override
-    public String format(BookCollection collection) {
-        if (collection.isEmpty()){
-            return NO_BOOKS_AVAILABLE_PROMPT + NEWLINE + NEWLINE;
+    public String format(ItemCollection collection) {
+        if (collection instanceof BookCollection){
+            return format((BookCollection) collection);
         }
-
-        List<Item> books = collection.getAvailable();
-        StringBuilder builder = new StringBuilder();
-        builder.append(AVAILABLE_BOOKS_HEADER + NEWLINE + NEWLINE);
-        builder.append(rowBorder());
-        builder.append(String.format(ROW_FORMAT, EMPTY_STRING, EMPTY_STRING, EMPTY_STRING));
-        builder.append(String.format(ROW_FORMAT, HEADER_NAME, HEADER_AUTHOR, HEADER_YEAR));
-        builder.append(String.format(ROW_FORMAT, EMPTY_STRING, EMPTY_STRING, EMPTY_STRING));
-        builder.append(rowBorder());
-
-        for (Item bookItem : books) {
-            Book book = (Book) bookItem;
-            builder.append(format(book));
-        }
-
-        return builder.toString();
+        return "";
     }
 
     @Override
@@ -85,5 +70,27 @@ public class ConsoleFormatter implements Formatter {
             builder.append(PLUS);
         }
         return builder.toString() + NEWLINE;
+    }
+
+    private String format(BookCollection collection) {
+        if (collection.isEmpty()){
+            return NO_BOOKS_AVAILABLE_PROMPT + NEWLINE + NEWLINE;
+        }
+
+        List<Item> books = collection.getAvailable();
+        StringBuilder builder = new StringBuilder();
+        builder.append(AVAILABLE_BOOKS_HEADER + NEWLINE + NEWLINE);
+        builder.append(rowBorder());
+        builder.append(String.format(ROW_FORMAT, EMPTY_STRING, EMPTY_STRING, EMPTY_STRING));
+        builder.append(String.format(ROW_FORMAT, HEADER_NAME, HEADER_AUTHOR, HEADER_YEAR));
+        builder.append(String.format(ROW_FORMAT, EMPTY_STRING, EMPTY_STRING, EMPTY_STRING));
+        builder.append(rowBorder());
+
+        for (Item bookItem : books) {
+            Book book = (Book) bookItem;
+            builder.append(format(book));
+        }
+
+        return builder.toString();
     }
 }

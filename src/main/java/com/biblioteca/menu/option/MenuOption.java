@@ -1,5 +1,6 @@
 package com.biblioteca.menu.option;
 
+import com.biblioteca.entities.ItemCollection;
 import ui.ConsoleUIDriver;
 import ui.UIDriver;
 import com.biblioteca.entities.BookCollection;
@@ -9,9 +10,9 @@ import com.biblioteca.entities.FixedBookCollection;
 public abstract class MenuOption {
     final UIDriver uiDriver;
     final String nameOnScreen;
-    final BookCollection collection;
+    final ItemCollection collection;
 
-    MenuOption(String nameOnScreen, BookCollection collection, UIDriver uiDriver) {
+    MenuOption(String nameOnScreen, ItemCollection collection, UIDriver uiDriver) {
         this.nameOnScreen = nameOnScreen;
         this.collection = collection;
         this.uiDriver = uiDriver;
