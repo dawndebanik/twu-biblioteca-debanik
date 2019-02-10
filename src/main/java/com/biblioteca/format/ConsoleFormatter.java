@@ -2,6 +2,7 @@ package com.biblioteca.format;
 
 import com.biblioteca.entities.Book;
 import com.biblioteca.entities.BookCollection;
+import com.biblioteca.entities.Item;
 import com.biblioteca.menu.Menu;
 
 import java.util.List;
@@ -32,7 +33,7 @@ public class ConsoleFormatter implements Formatter {
             return NO_BOOKS_AVAILABLE_PROMPT + NEWLINE + NEWLINE;
         }
 
-        List<Book> books = collection.getAvailableBooks();
+        List<Item> books = collection.getAvailable();
         StringBuilder builder = new StringBuilder();
         builder.append(AVAILABLE_BOOKS_HEADER + NEWLINE + NEWLINE);
         builder.append(rowBorder());
@@ -41,7 +42,8 @@ public class ConsoleFormatter implements Formatter {
         builder.append(String.format(ROW_FORMAT, EMPTY_STRING, EMPTY_STRING, EMPTY_STRING));
         builder.append(rowBorder());
 
-        for (Book book : books) {
+        for (Item bookItem : books) {
+            Book book = (Book) bookItem;
             builder.append(format(book));
         }
 

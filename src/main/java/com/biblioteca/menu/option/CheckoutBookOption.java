@@ -1,24 +1,24 @@
 package com.biblioteca.menu.option;
 
-import com.biblioteca.BookNotAvailableException;
-import ui.UIDriver;
 import com.biblioteca.entities.BookCollection;
+import com.biblioteca.entities.ItemNotAvailableException;
+import ui.UIDriver;
 
 // represents the choice of the user to borrow a book
-public class CheckoutOption extends MenuOption {
+public class CheckoutBookOption extends MenuOption {
     private static final String SUCCESSFUL_CHECKOUT_MESSAGE = "Thank you! Enjoy the book.\n";
     private static final String UNSUCCESSFUL_CHECKOUT_MESSAGE = "That book is not available. Maybe you spelt it wrong?\n";
     private static final String ENTER_BOOK_NAME_PROMPT = "Enter the name of the book you want to check out: ";
 
-    public CheckoutOption(String nameOnScreen, BookCollection collection, UIDriver uiDriver) {
+    public CheckoutBookOption(String nameOnScreen, BookCollection collection, UIDriver uiDriver) {
         super(nameOnScreen, collection, uiDriver);
     }
 
-    CheckoutOption(String nameOnScreen, BookCollection collection) {
+    CheckoutBookOption(String nameOnScreen, BookCollection collection) {
         super(nameOnScreen, collection);
     }
 
-    public CheckoutOption(String nameOnScreen) {
+    public CheckoutBookOption(String nameOnScreen) {
         super(nameOnScreen);
     }
 
@@ -32,9 +32,9 @@ public class CheckoutOption extends MenuOption {
         uiDriver.show(ENTER_BOOK_NAME_PROMPT);
         String bookNameChoice = uiDriver.readInput();
         try {
-            collection.removeBook(bookNameChoice);
+            collection.remove(bookNameChoice);
             uiDriver.show(SUCCESSFUL_CHECKOUT_MESSAGE);
-        } catch (BookNotAvailableException exception) {
+        } catch (ItemNotAvailableException exception) {
             uiDriver.show(UNSUCCESSFUL_CHECKOUT_MESSAGE);
         }
     }

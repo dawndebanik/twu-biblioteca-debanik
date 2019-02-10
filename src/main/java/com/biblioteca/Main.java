@@ -24,9 +24,9 @@ public class Main {
 
     private static Menu defaultMenu() {
         MenuOption listBooks = new ListBooksOption("List books", collection, consoleDriver);
-        MenuOption checkout = new CheckoutOption("Checkout a book", collection, consoleDriver);
+        MenuOption checkout = new CheckoutBookOption("Checkout a book", collection, consoleDriver);
         MenuOption invalid = new InvalidOption("Select a valid option!", collection, consoleDriver);
-        MenuOption returnBook = new ReturnOption("Return a book", collection, consoleDriver);
+        MenuOption returnBook = new ReturnBookOption("Return a book", collection, consoleDriver);
 
         List<MenuOption> options = new ArrayList<>();
         options.add(listBooks);

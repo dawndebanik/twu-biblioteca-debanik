@@ -1,8 +1,6 @@
 package com.biblioteca;
 
-import com.biblioteca.entities.Book;
-import com.biblioteca.entities.BookCollection;
-import com.biblioteca.entities.FixedBookCollection;
+import com.biblioteca.entities.*;
 import org.junit.jupiter.api.Test;
 
 import java.util.ArrayList;
@@ -23,22 +21,25 @@ class FixedBookCollectionTest {
                 new Book("Kafka on the Shore", "Haruki Murakami", "2002"),
                 new Book("Nineteen Eighty-Four", "George Orwell", "1949"));
 
-        List<Book> actualBooks = fixedCollection.getAvailableBooks();
+        List<Item> actualBooks = fixedCollection.getAvailable();
 
         assertEquals(expectedBooks.size(), actualBooks.size());
         for (int index = 0; index < actualBooks.size(); index++) {
-            assertEquals(expectedBooks.get(index).name(), actualBooks.get(index).name());
+
+            Book book = (Book) actualBooks.get(index);
+            assertEquals(expectedBooks.get(index).name(), book.name());
         }
     }
 
     @Test
-    void expectsBookToBeUnavailableAfterCheckout() throws BookNotAvailableException {
+    void expectsBookToBeUnavailableAfterCheckout() throws ItemNotAvailableException {
         BookCollection fixedCollection = new FixedBookCollection();
         String bookName = "War and Peace";
 
-        fixedCollection.removeBook(bookName);
+        fixedCollection.remove(bookName);
 
-        for (Book book : fixedCollection.getAvailableBooks()) {
+        for (Item bookItem : fixedCollection.getAvailable()) {
+            Book book = (Book) bookItem;
             assertNotEquals("War and Peace", book.name());
         }
     }
@@ -48,16 +49,16 @@ class FixedBookCollectionTest {
         BookCollection fixedCollection = new FixedBookCollection();
         String bookName = "Pride and Prejudice";
 
-        assertThrows(BookNotAvailableException.class, () -> fixedCollection.removeBook(bookName));
+        assertThrows(BookNotAvailableException.class, () -> fixedCollection.remove(bookName));
     }
 
     @Test
-    void expectsSuccessfulInsertionWhenBookWasCheckedOut() throws BookNotAvailableException {
+    void expectsSuccessfulInsertionWhenBookWasCheckedOut() throws ItemNotAvailableException {
         BookCollection fixedCollection = new FixedBookCollection();
         String bookName = "War and Peace";
-        fixedCollection.removeBook(bookName);
+        fixedCollection.remove(bookName);
 
-        assertDoesNotThrow(() -> fixedCollection.addBook(bookName));
+        assertDoesNotThrow(() -> fixedCollection.add(bookName));
     }
 
     @Test
@@ -65,6 +66,6 @@ class FixedBookCollectionTest {
         BookCollection fixedCollection = new FixedBookCollection();
         String bookName = "Pride and Prejudice";
 
-        assertThrows(BookDoesNotBelongHereException.class, () -> fixedCollection.addBook(bookName));
+        assertThrows(BookDoesNotBelongHereException.class, () -> fixedCollection.add(bookName));
     }
 }

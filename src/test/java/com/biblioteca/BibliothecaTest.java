@@ -1,8 +1,7 @@
 package com.biblioteca;
 
-import com.biblioteca.entities.FixedBookCollection;
-import com.biblioteca.menu.*;
-import com.biblioteca.menu.option.CheckoutOption;
+import com.biblioteca.menu.Menu;
+import com.biblioteca.menu.option.CheckoutBookOption;
 import com.biblioteca.menu.option.InvalidOption;
 import com.biblioteca.menu.option.ListBooksOption;
 import com.biblioteca.menu.option.MenuOption;
@@ -32,7 +31,7 @@ class BibliothecaTest {
 
     private static Menu defaultMenuWith(UIDriver uiDriver) {
         MenuOption listBooks = new ListBooksOption("List Books");
-        MenuOption checkout = new CheckoutOption("Checkout a book");
+        MenuOption checkout = new CheckoutBookOption("Checkout a book");
         MenuOption invalid = new InvalidOption("Select a valid Option!");
         List<MenuOption> options = new ArrayList<>();
         options.add(listBooks);
