@@ -3,6 +3,7 @@ package com.biblioteca.menu.option;
 import ui.UIDriver;
 import com.biblioteca.entities.BookCollection;
 
+// represents a case where the choice of the user is not within defined choices
 public class InvalidOption extends MenuOption {
 
     public InvalidOption(String nameOnScreen, BookCollection collection, UIDriver uiDriver) {

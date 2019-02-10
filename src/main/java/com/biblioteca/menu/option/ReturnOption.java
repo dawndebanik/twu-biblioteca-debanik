@@ -4,8 +4,8 @@ import com.biblioteca.BookDoesNotBelongHereException;
 import ui.UIDriver;
 import com.biblioteca.entities.BookCollection;
 
+// represents the choice of the user to return a book
 public class ReturnOption extends MenuOption{
-
     private static final String ENTER_BOOK_NAME_PROMPT = "Enter the name of the book you want to return: ";
     private static final String SUCCESSFUL_RETURN_MESSAGE = "Thank you for returning the book.\n";
     private static final String UNSUCCESSFUL_RETURN_MESSAGE = "That is not a valid book to return.\n";

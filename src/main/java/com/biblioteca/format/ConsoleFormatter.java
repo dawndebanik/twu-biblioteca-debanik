@@ -6,6 +6,7 @@ import com.biblioteca.menu.Menu;
 
 import java.util.List;
 
+// represents how data is showed on the console
 public class ConsoleFormatter implements Formatter {
 
     private static final String ROW_FORMAT = "| %1$30s | %2$30s | %3$30s |\n";

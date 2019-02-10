@@ -4,6 +4,7 @@ import com.biblioteca.BookNotAvailableException;
 import ui.UIDriver;
 import com.biblioteca.entities.BookCollection;
 
+// represents the choice of the user to borrow a book
 public class CheckoutOption extends MenuOption {
     private static final String SUCCESSFUL_CHECKOUT_MESSAGE = "Thank you! Enjoy the book.\n";
     private static final String UNSUCCESSFUL_CHECKOUT_MESSAGE = "That book is not available. Maybe you spelt it wrong?\n";
