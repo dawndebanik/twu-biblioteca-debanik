@@ -12,7 +12,7 @@ public class ConsoleFormatter implements Formatter {
     private static final String AVAILABLE_BOOKS_HEADER = "Available books:";
     private static final String AVAILABLE_MOVIES_HEADER = "Available movies:";
     private static final String EMPTY_STRING = "";
-    private static final String HEADER_YEAR = "Year of Publishing";
+    private static final String HEADER_YEAR = "Year";
     private static final String HEADER_AUTHOR = "Author";
     private static final String HEADER_DIRECTOR = "Director";
     private static final String HEADER_NAME = "Name";
