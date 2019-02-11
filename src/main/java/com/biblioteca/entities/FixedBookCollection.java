@@ -1,7 +1,7 @@
 package com.biblioteca.entities;
 
-import com.biblioteca.BookDoesNotBelongHereException;
-import com.biblioteca.BookNotAvailableException;
+import com.biblioteca.exceptions.BookDoesNotBelongHereException;
+import com.biblioteca.exceptions.BookNotAvailableException;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -51,9 +51,9 @@ public class FixedBookCollection implements BookCollection {
     }
 
     private Book getBookByBookName(String bookName, List<Book> collectionToSearch) throws BookNotAvailableException {
-        for (Item bookItem: collectionToSearch){
+        for (Item bookItem : collectionToSearch) {
             Book book = (Book) bookItem;
-            if (book.name().equals(bookName)){
+            if (book.name().equals(bookName)) {
                 return book;
             }
         }

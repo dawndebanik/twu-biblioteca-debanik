@@ -1,7 +1,7 @@
 package com.biblioteca.entities;
 
 // represents a bound set of blank sheets for writing in
-public class Book implements Item{
+public class Book implements Item {
     private final String name;
     private final String author;
     private final String year;

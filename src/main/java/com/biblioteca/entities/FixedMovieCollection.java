@@ -1,8 +1,8 @@
 package com.biblioteca.entities;
 
-import com.biblioteca.ItemDoesNotBelongHereException;
-import com.biblioteca.MovieDoesNotBelongHereException;
-import com.biblioteca.MovieNotAvailableException;
+import com.biblioteca.exceptions.ItemDoesNotBelongHereException;
+import com.biblioteca.exceptions.MovieDoesNotBelongHereException;
+import com.biblioteca.exceptions.MovieNotAvailableException;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -52,9 +52,9 @@ public class FixedMovieCollection implements MovieCollection {
     }
 
     private Movie getMovieByName(String movieName, List<Movie> collectionToSearch) throws MovieNotAvailableException {
-        for (Item movieItem: collectionToSearch){
+        for (Item movieItem : collectionToSearch) {
             Movie movie = (Movie) movieItem;
-            if (movie.name().equals(movieName)){
+            if (movie.name().equals(movieName)) {
                 return movie;
             }
         }

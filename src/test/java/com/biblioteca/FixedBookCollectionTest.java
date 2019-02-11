@@ -1,6 +1,9 @@
 package com.biblioteca;
 
 import com.biblioteca.entities.*;
+import com.biblioteca.exceptions.BookDoesNotBelongHereException;
+import com.biblioteca.exceptions.BookNotAvailableException;
+import com.biblioteca.exceptions.ItemNotAvailableException;
 import org.junit.jupiter.api.Test;
 
 import java.util.Arrays;

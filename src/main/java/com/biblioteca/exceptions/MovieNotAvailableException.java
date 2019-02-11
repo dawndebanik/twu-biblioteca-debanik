@@ -1,4 +1,4 @@
-package com.biblioteca;
+package com.biblioteca.exceptions;
 
 // represents a special case where a movie is not available
 public class MovieNotAvailableException extends ItemNotAvailableException {

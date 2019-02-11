@@ -1,6 +1,7 @@
 package com.biblioteca;
 
 import com.biblioteca.entities.*;
+import com.biblioteca.exceptions.ItemDoesNotBelongHereException;
 import com.biblioteca.format.ConsoleFormatter;
 import com.biblioteca.io.ConsoleIODriver;
 import com.biblioteca.io.IODriver;

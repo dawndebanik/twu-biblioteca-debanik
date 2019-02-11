@@ -1,4 +1,4 @@
-package com.biblioteca;
+package com.biblioteca.exceptions;
 
 // represents a special case where the book trying to be added
 // does not belong to bibliotheca

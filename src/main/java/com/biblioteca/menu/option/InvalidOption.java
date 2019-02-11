@@ -18,6 +18,6 @@ public class InvalidOption extends MenuOption {
 
     @Override
     public void select() {
-        uiDriver.show(nameOnScreen+ NEWLINE);
+        uiDriver.show(nameOnScreen + NEWLINE);
     }
 }

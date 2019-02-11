@@ -1,4 +1,4 @@
-package com.biblioteca;
+package com.biblioteca.exceptions;
 
 // represents special case where the item trying to be
 // returned does not belong to Bibliotheca

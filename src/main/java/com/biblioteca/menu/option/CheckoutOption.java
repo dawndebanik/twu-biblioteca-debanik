@@ -2,7 +2,7 @@ package com.biblioteca.menu.option;
 
 import com.biblioteca.entities.BookCollection;
 import com.biblioteca.entities.ItemCollection;
-import com.biblioteca.ItemNotAvailableException;
+import com.biblioteca.exceptions.ItemNotAvailableException;
 import ui.UIDriver;
 
 // represents the choice of the user to borrow an item
@@ -38,7 +38,7 @@ public class CheckoutOption extends MenuOption {
     }
 
     private void setPrompts() {
-        if (collection instanceof BookCollection){
+        if (collection instanceof BookCollection) {
             SUCCESSFUL_CHECKOUT_MESSAGE = "Thank you! Enjoy the book.\n";
             UNSUCCESSFUL_CHECKOUT_MESSAGE = "That book is not available. Maybe you mistyped it?\n";
             ENTER_ITEM_NAME_PROMPT = "Enter the name of the book";

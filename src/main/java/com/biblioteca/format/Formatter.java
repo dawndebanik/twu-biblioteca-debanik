@@ -8,7 +8,10 @@ import com.biblioteca.menu.Menu;
 // in a particular way to the user
 public interface Formatter {
     String format(ItemCollection collection);
+
     String format(Item item);
+
     String format(String message);
+
     String format(Menu menu);
 }

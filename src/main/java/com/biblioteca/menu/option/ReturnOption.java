@@ -2,11 +2,11 @@ package com.biblioteca.menu.option;
 
 import com.biblioteca.entities.BookCollection;
 import com.biblioteca.entities.ItemCollection;
-import com.biblioteca.ItemDoesNotBelongHereException;
+import com.biblioteca.exceptions.ItemDoesNotBelongHereException;
 import ui.UIDriver;
 
 // represents the choice of the user to return an item
-public class ReturnOption extends MenuOption{
+public class ReturnOption extends MenuOption {
     private static String ENTER_ITEM_NAME_PROMPT;
     private static String SUCCESSFUL_RETURN_MESSAGE;
     private static String UNSUCCESSFUL_RETURN_MESSAGE;
@@ -39,7 +39,7 @@ public class ReturnOption extends MenuOption{
     }
 
     private void setPrompts() {
-        if (collection instanceof BookCollection){
+        if (collection instanceof BookCollection) {
             SUCCESSFUL_RETURN_MESSAGE = "Thank you for returning the book.\n";
             UNSUCCESSFUL_RETURN_MESSAGE = "That is not a valid book to return.\n";
             ENTER_ITEM_NAME_PROMPT = "Enter the name of the book you want to return: ";
