@@ -24,9 +24,9 @@ public class ConsoleFormatter implements Formatter {
     private static final String QUIT_TO_EXIT_PROMPT = "Type 'quit' to exit the application.";
     private static final String NO_BOOKS_AVAILABLE_PROMPT = "Sorry, no books are available right now.";
     private static final String NO_MOVIES_AVAILABLE_PROMPT = "Sorry, no movies are available right now.";
+    private static final String HEADER_RATING = "Rating";
     private static final int COLUMN_COUNT_BOOK = 3;
     private static final int ROW_SIZE = 32;
-    private static final String HEADER_RATING = "Rating";
     private static final int COLUMN_COUNT_MOVIE = 4;
 
     @Override
@@ -77,28 +77,6 @@ public class ConsoleFormatter implements Formatter {
         return builder.toString() + NEWLINE;
     }
 
-    private String format(BookCollection collection) {
-        if (collection.isEmpty()) {
-            return NO_BOOKS_AVAILABLE_PROMPT + NEWLINE + NEWLINE;
-        }
-
-        List<Item> books = collection.getAvailable();
-        StringBuilder builder = new StringBuilder();
-        builder.append(AVAILABLE_BOOKS_HEADER + NEWLINE + NEWLINE);
-        builder.append(rowBorder(COLUMN_COUNT_BOOK));
-        builder.append(String.format(BOOK_ROW_FORMAT, EMPTY_STRING, EMPTY_STRING, EMPTY_STRING));
-        builder.append(String.format(BOOK_ROW_FORMAT, HEADER_NAME, HEADER_AUTHOR, HEADER_YEAR));
-        builder.append(String.format(BOOK_ROW_FORMAT, EMPTY_STRING, EMPTY_STRING, EMPTY_STRING));
-        builder.append(rowBorder(COLUMN_COUNT_BOOK));
-
-        for (Item bookItem : books) {
-            Book book = (Book) bookItem;
-            builder.append(format(book));
-        }
-
-        return builder.toString();
-    }
-
     private String format(Book book) {
         return String.format(BOOK_ROW_FORMAT, book.name(), book.author(), book.year()) + rowBorder(COLUMN_COUNT_BOOK);
     }
@@ -125,6 +103,28 @@ public class ConsoleFormatter implements Formatter {
         for (Item movieItem : movies) {
             Movie movie = (Movie) movieItem;
             builder.append(format(movie));
+        }
+
+        return builder.toString();
+    }
+
+    private String format(BookCollection collection) {
+        if (collection.isEmpty()) {
+            return NO_BOOKS_AVAILABLE_PROMPT + NEWLINE + NEWLINE;
+        }
+
+        List<Item> books = collection.getAvailable();
+        StringBuilder builder = new StringBuilder();
+        builder.append(AVAILABLE_BOOKS_HEADER + NEWLINE + NEWLINE);
+        builder.append(rowBorder(COLUMN_COUNT_BOOK));
+        builder.append(String.format(BOOK_ROW_FORMAT, EMPTY_STRING, EMPTY_STRING, EMPTY_STRING));
+        builder.append(String.format(BOOK_ROW_FORMAT, HEADER_NAME, HEADER_AUTHOR, HEADER_YEAR));
+        builder.append(String.format(BOOK_ROW_FORMAT, EMPTY_STRING, EMPTY_STRING, EMPTY_STRING));
+        builder.append(rowBorder(COLUMN_COUNT_BOOK));
+
+        for (Item bookItem : books) {
+            Book book = (Book) bookItem;
+            builder.append(format(book));
         }
 
         return builder.toString();

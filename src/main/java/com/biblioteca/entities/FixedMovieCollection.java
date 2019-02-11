@@ -9,6 +9,7 @@ import java.util.Arrays;
 import java.util.List;
 import java.util.stream.Collectors;
 
+// represents a predefined repository of movies
 public class FixedMovieCollection implements MovieCollection {
     private static final String MOVIE_NOT_CHECKED_OUT_MESSAGE = "This movie was not checked out";
     private static final String MOVIE_UNAVAILABLE_MESSAGE = "No movie with the requested name is available";

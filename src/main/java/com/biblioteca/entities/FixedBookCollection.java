@@ -8,7 +8,7 @@ import java.util.Arrays;
 import java.util.List;
 import java.util.stream.Collectors;
 
-// represents a predefined repository of availableBooks
+// represents a predefined repository of books
 public class FixedBookCollection implements BookCollection {
     private static final String BOOK_NOT_CHECKED_OUT_MESSAGE = "This book was not checked out";
     private static final String BOOK_UNAVAILABLE_MESSAGE = "No book with the requested name is available";
