@@ -6,8 +6,8 @@ import com.biblioteca.entities.FixedMovieCollection;
 import com.biblioteca.entities.MovieCollection;
 import com.biblioteca.menu.*;
 import com.biblioteca.menu.option.*;
-import ui.ConsoleUIDriver;
-import ui.UIDriver;
+import com.biblioteca.ui.ConsoleUIDriver;
+import com.biblioteca.ui.UIDriver;
 
 import java.util.ArrayList;
 import java.util.List;

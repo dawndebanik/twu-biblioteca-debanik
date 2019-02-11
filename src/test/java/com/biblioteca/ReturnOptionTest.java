@@ -8,8 +8,8 @@ import com.biblioteca.io.IODriver;
 import com.biblioteca.menu.option.MenuOption;
 import com.biblioteca.menu.option.ReturnOption;
 import org.junit.jupiter.api.Test;
-import ui.ConsoleUIDriver;
-import ui.UIDriver;
+import com.biblioteca.ui.ConsoleUIDriver;
+import com.biblioteca.ui.UIDriver;
 
 import static org.mockito.Matchers.contains;
 import static org.mockito.Mockito.*;

@@ -1,6 +1,5 @@
-package ui;
+package com.biblioteca.ui;
 
-import com.biblioteca.entities.BookCollection;
 import com.biblioteca.entities.ItemCollection;
 import com.biblioteca.format.ConsoleFormatter;
 import com.biblioteca.format.Formatter;

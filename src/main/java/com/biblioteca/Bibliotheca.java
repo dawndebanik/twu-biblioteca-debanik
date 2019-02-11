@@ -1,7 +1,7 @@
 package com.biblioteca;
 
 import com.biblioteca.menu.Menu;
-import ui.UIDriver;
+import com.biblioteca.ui.UIDriver;
 
 // represents the library management system
 class Bibliotheca {

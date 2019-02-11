@@ -1,4 +1,4 @@
-package ui;
+package com.biblioteca.ui;
 
 import com.biblioteca.entities.BookCollection;
 import com.biblioteca.entities.ItemCollection;

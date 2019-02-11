@@ -6,8 +6,8 @@ import com.biblioteca.menu.option.InvalidOption;
 import com.biblioteca.menu.option.ListItemsOption;
 import com.biblioteca.menu.option.MenuOption;
 import org.junit.jupiter.api.Test;
-import ui.ConsoleUIDriver;
-import ui.UIDriver;
+import com.biblioteca.ui.ConsoleUIDriver;
+import com.biblioteca.ui.UIDriver;
 
 import java.util.ArrayList;
 import java.util.Arrays;

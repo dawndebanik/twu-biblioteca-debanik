@@ -10,7 +10,7 @@ import com.biblioteca.menu.option.ListItemsOption;
 import com.biblioteca.menu.Menu;
 import com.biblioteca.menu.option.MenuOption;
 import org.junit.jupiter.api.Test;
-import ui.ConsoleUIDriver;
+import com.biblioteca.ui.ConsoleUIDriver;
 
 import java.util.Collections;
 

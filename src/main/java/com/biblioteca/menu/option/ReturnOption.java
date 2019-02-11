@@ -3,7 +3,7 @@ package com.biblioteca.menu.option;
 import com.biblioteca.entities.BookCollection;
 import com.biblioteca.entities.ItemCollection;
 import com.biblioteca.exceptions.ItemDoesNotBelongHereException;
-import ui.UIDriver;
+import com.biblioteca.ui.UIDriver;
 
 // represents the choice of the user to return an item
 public class ReturnOption extends MenuOption {

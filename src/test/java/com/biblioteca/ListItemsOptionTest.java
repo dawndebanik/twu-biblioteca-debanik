@@ -7,7 +7,7 @@ import com.biblioteca.io.IODriver;
 import com.biblioteca.menu.option.ListItemsOption;
 import com.biblioteca.menu.option.MenuOption;
 import org.junit.jupiter.api.Test;
-import ui.ConsoleUIDriver;
+import com.biblioteca.ui.ConsoleUIDriver;
 
 import static org.mockito.Matchers.contains;
 import static org.mockito.Mockito.mock;
